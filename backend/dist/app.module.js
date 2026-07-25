@@ -97,12 +97,12 @@ exports.AppModule = AppModule = __decorate([
         imports: [
             config_1.ConfigModule.forRoot({ isGlobal: true }),
             serve_static_1.ServeStaticModule.forRoot({
-                rootPath: path.join(__dirname, '../../uploads'),
-                serveRoot: '/uploads',
+                rootPath: path.join(__dirname, '../frontend'),
+                serveRoot: '/',
             }),
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'better-sqlite3',
-                database: '/workspace/backend/database.sqlite',
+                database: process.env.DB_PATH || path.join(__dirname, '../database.sqlite'),
                 entities: [
                     user_entity_1.User,
                     role_entity_1.Role,
