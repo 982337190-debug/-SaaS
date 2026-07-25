@@ -56,12 +56,12 @@ const jwtSecret = process.env.JWT_SECRET || 'your-secret-key';
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     ServeStaticModule.forRoot({
-      rootPath: path.join(__dirname, '../../uploads'),
-      serveRoot: '/uploads',
+      rootPath: path.join(__dirname, '../frontend'),
+      serveRoot: '/',
     }),
     TypeOrmModule.forRoot({
       type: 'better-sqlite3',
-      database: '/workspace/backend/database.sqlite',
+      database: process.env.DB_PATH || path.join(__dirname, '../database.sqlite'),
       entities: [
         User,
         Role,
