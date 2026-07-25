@@ -905,39 +905,35 @@ tbody tr:last-child td { border-bottom: none; }
       <div class="form-grid">
         <div class="form-group">
           <label class="form-label">报价名称 <span class="req">*</span></label>
-          <input class="form-input" placeholder="请输入报价名称" value="日本本州经典6日游">
+          <input id="new-quote-name" class="form-input" placeholder="请输入报价名称" value="">
         </div>
         <div class="form-group">
           <label class="form-label">客户 <span class="req">*</span></label>
-          <select class="form-select">
-            <option>请选择客户</option>
-            <option selected>北京环球国际旅行社</option>
-            <option>上海春秋旅游</option>
-            <option>广州广之旅</option>
-            <option>深圳海外国旅</option>
+          <select id="new-quote-customer" class="form-select">
+            <option value="">请选择客户</option>
           </select>
         </div>
         <div class="form-group">
           <label class="form-label">团类型 <span class="req">*</span></label>
-          <select class="form-select">
+          <select id="new-quote-type" class="form-select">
             <option value="">请选择团类型</option>
-            <option selected>散团</option>
-            <option>企业团建</option>
-            <option>公务团</option>
-            <option>研学团</option>
+            <option value="散团">散团</option>
+            <option value="企业团建">企业团建</option>
+            <option value="公务团">公务团</option>
+            <option value="研学团">研学团</option>
           </select>
         </div>
         <div class="form-group">
           <label class="form-label">人数 <span class="req">*</span></label>
-          <input class="form-input" type="number" value="25" placeholder="请输入人数">
+          <input id="new-quote-people" class="form-input" type="number" value="10" placeholder="请输入人数">
         </div>
         <div class="form-group">
           <label class="form-label">出发日期 <span class="req">*</span></label>
-          <input class="form-input" type="date" value="2026-04-15">
+          <input id="new-quote-date" class="form-input" type="date" value="">
         </div>
         <div class="form-group">
           <label class="form-label">行程天数</label>
-          <input class="form-input" type="number" value="6" placeholder="自动计算">
+          <input id="new-quote-days" class="form-input" type="number" value="5" placeholder="自动计算">
         </div>
       </div>
 
@@ -1224,17 +1220,60 @@ tbody tr:last-child td { border-bottom: none; }
 </div>
 
 <script>
+// ========== API Helpers ==========
+const API = {
+  async get(url) {
+    const res = await fetch(url);
+    const json = await res.json();
+    return json.data || json;
+  },
+  async post(url, body) {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    return await res.json();
+  },
+  async put(url, body) {
+    const res = await fetch(url, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    return await res.json();
+  },
+  async del(url) {
+    const res = await fetch(url, { method: 'DELETE' });
+    return await res.json();
+  },
+};
+
+function getStatusClass(status) {
+  const map = {
+    '草稿': 'badge-draft',
+    '待审批': 'badge-pending',
+    '已发送客户': 'badge-sent',
+    '客户确认': 'badge-confirmed',
+    '失效': 'badge-expired',
+  };
+  return map[status] || 'badge-info';
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return '-';
+  const d = new Date(dateStr);
+  return d.toISOString().split('T')[0];
+}
+
+function formatAmount(amount) {
+  if (!amount) return '-';
+  return '¥' + Number(amount).toLocaleString();
+}
+
 // ========== Mock Data ==========
-const quoteData = [
-  { id:'Q20260310001', name:'日本本州经典6日游', customer:'北京环球国际旅行社', type:'散团', date:'2026-04-15', people:25, amount:'¥245,000', status:'客户确认', statusClass:'badge-confirmed' },
-  { id:'Q20260310002', name:'泰国清迈拜县7日深度游', customer:'上海春秋旅游', type:'散团', date:'2026-05-01', people:18, amount:'¥198,000', status:'已发送客户', statusClass:'badge-sent' },
-  { id:'Q20260312003', name:'巴厘岛5日浪漫海岛游', customer:'广州广之旅', type:'散团', date:'2026-04-20', people:20, amount:'¥320,000', status:'待审批', statusClass:'badge-pending' },
-  { id:'Q20260315004', name:'欧洲三国12日文化之旅', customer:'深圳海外国旅', type:'公务团', date:'2026-06-01', people:15, amount:'¥680,000', status:'草稿', statusClass:'badge-draft' },
-  { id:'Q20260318005', name:'首尔济州6日韩风体验', customer:'北京环球国际旅行社', type:'研学团', date:'2026-07-10', people:40, amount:'¥520,000', status:'客户确认', statusClass:'badge-confirmed' },
-  { id:'Q20260320006', name:'新加坡马来西亚8日亲子游', customer:'上海春秋旅游', type:'散团', date:'2026-06-15', people:30, amount:'¥435,000', status:'已发送客户', statusClass:'badge-sent' },
-  { id:'Q20260322007', name:'越南芽庄4日休闲游', customer:'广州广之旅', type:'散团', date:'2026-05-20', people:22, amount:'¥132,000', status:'草稿', statusClass:'badge-draft' },
-  { id:'Q20260225008', name:'澳洲东海岸8日自然探索', customer:'深圳海外国旅', type:'企业团建', date:'2026-03-28', people:12, amount:'¥385,000', status:'失效', statusClass:'badge-expired' },
-];
+let quoteData = [];
+let customerList = [];
 
 const teamData = [
   { id:'TM20260415001', customer:'北京环球国际旅行社', quoteName:'日本本州经典6日游', people:25, op:'李明（日本区）', date:'2026-04-15', status:'采购中', statusClass:'badge-processing' },
@@ -1334,6 +1373,29 @@ function switchTab(el, contentId) {
 // ========== Quote List ==========
 let quoteFilter = { search: '', status: '' };
 
+async function loadQuotes() {
+  const params = new URLSearchParams({
+    page: 1,
+    page_size: 20,
+  });
+  if (quoteFilter.search) params.append('search', quoteFilter.search);
+  if (quoteFilter.status) params.append('status', quoteFilter.status);
+  const result = await API.get(`/quotes?${params.toString()}`);
+  quoteData = (result.data || result).map(q => ({
+    id: q.quote_no,
+    uuid: q.id,
+    name: q.name,
+    customer: q.customer?.name || '-',
+    type: q.type,
+    date: formatDate(q.departure_date),
+    people: q.people,
+    amount: formatAmount(q.total_amount),
+    status: q.status,
+    statusClass: getStatusClass(q.status),
+  }));
+  renderQuotes();
+}
+
 function renderQuotes() {
   const tbody = document.getElementById('quote-tbody');
   let filtered = quoteData.filter(q => {
@@ -1364,15 +1426,25 @@ function renderQuotes() {
   `).join('');
 }
 
-function filterQuotes(val) { quoteFilter.search = val; renderQuotes(); }
+function filterQuotes(val) { quoteFilter.search = val; loadQuotes(); }
 function filterQuoteStatus(status, el) {
   quoteFilter.status = status;
   el.parentElement.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
   el.classList.add('active');
-  renderQuotes();
+  loadQuotes();
 }
 
-function openNewQuoteModal() { openModal('modal-new-quote'); }
+function openNewQuoteModal() {
+  document.getElementById('new-quote-name').value = '';
+  document.getElementById('new-quote-customer').value = '';
+  document.getElementById('new-quote-type').value = '';
+  document.getElementById('new-quote-people').value = '10';
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('new-quote-date').value = today;
+  document.getElementById('new-quote-days').value = '5';
+  loadCustomers();
+  openModal('modal-new-quote');
+}
 
 function viewQuoteDetail(id) {
   const q = quoteData.find(x => x.id === id);
@@ -1463,8 +1535,50 @@ function renderQuoteDays() {
   `).join('');
 }
 
-function saveQuoteDraft() { closeModal('modal-new-quote'); showToast('报价已保存为草稿'); }
-function submitQuoteApproval() { closeModal('modal-new-quote'); showToast('报价已提交审批'); }
+function saveQuoteDraft() { createQuote('draft'); }
+async function submitQuoteApproval() { await createQuote('submit'); }
+
+async function createQuote(mode) {
+  const name = document.getElementById('new-quote-name').value.trim();
+  const customerId = document.getElementById('new-quote-customer').value;
+  const type = document.getElementById('new-quote-type').value;
+  const people = parseInt(document.getElementById('new-quote-people').value);
+  const departureDate = document.getElementById('new-quote-date').value;
+  const days = parseInt(document.getElementById('new-quote-days').value) || 0;
+
+  if (!name) { showToast('请输入报价名称', 'error'); return; }
+  if (!customerId) { showToast('请选择客户', 'error'); return; }
+  if (!type) { showToast('请选择团类型', 'error'); return; }
+  if (!people || people <= 0) { showToast('请输入有效人数', 'error'); return; }
+  if (!departureDate) { showToast('请选择出发日期', 'error'); return; }
+
+  const body = { name, customer_id: customerId, type, people, departure_date: departureDate, days };
+
+  const result = await API.post('/quotes', body);
+  if (result.code !== 200 && !result.id) {
+    showToast(result.message || '创建失败', 'error');
+    return;
+  }
+
+  if (mode === 'submit') {
+    const quoteId = result.data?.id || result.id;
+    await API.post(`/quotes/${quoteId}/submit`);
+    showToast('报价已提交审批');
+  } else {
+    showToast('报价已保存为草稿');
+  }
+
+  closeModal('modal-new-quote');
+  loadQuotes();
+}
+
+async function loadCustomers() {
+  const result = await API.get('/customers?page=1&page_size=50');
+  customerList = result.data || result;
+  const select = document.getElementById('new-quote-customer');
+  select.innerHTML = '<option value="">请选择客户</option>' +
+    customerList.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+}
 
 // ========== Day Resources Toggle ==========
 function toggleDayResources(btn) {
@@ -1686,17 +1800,20 @@ function renderItinDays() {
 function generateDoc(name) { showToast(`已生成: ${name}`); }
 
 // ========== Toast ==========
-function showToast(msg) {
+function showToast(msg, type = 'success') {
   const toast = document.createElement('div');
-  toast.style.css = 'position:fixed;bottom:24px;right:24px;background:#1A3C5E;color:#fff;padding:12px 24px;border-radius:8px;font-size:14px;z-index:2000;box-shadow:0 4px 20px rgba(0,0,0,0.15);opacity:0;transition:opacity 0.3s;';
-  toast.textContent = '✓ ' + msg;
+  const bgColor = type === 'error' ? '#d32f2f' : '#1A3C5E';
+  const icon = type === 'error' ? '✕' : '✓';
+  toast.style.cssText = `position:fixed;bottom:24px;right:24px;background:${bgColor};color:#fff;padding:12px 24px;border-radius:8px;font-size:14px;z-index:2000;box-shadow:0 4px 20px rgba(0,0,0,0.15);opacity:0;transition:opacity 0.3s;`;
+  toast.textContent = icon + ' ' + msg;
   document.body.appendChild(toast);
   setTimeout(() => toast.style.opacity = '1', 10);
   setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 2500);
 }
 
 // ========== Init ==========
-renderQuotes();
+loadQuotes();
+loadCustomers();
 renderTeams();
 renderProcurement();
 renderItinerary();
