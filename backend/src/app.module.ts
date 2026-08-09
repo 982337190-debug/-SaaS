@@ -19,6 +19,7 @@ import { RegionOpController } from './controllers/region-op.controller';
 import { NotificationController } from './controllers/notification.controller';
 import { DashboardController } from './controllers/dashboard.controller';
 import { FileController } from './controllers/file.controller';
+import { ContractController } from './controllers/contract.controller';
 
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
@@ -33,6 +34,7 @@ import { PermissionService } from './services/permission.service';
 import { RegionOpService } from './services/region-op.service';
 import { NotificationService } from './services/notification.service';
 import { FileService } from './services/file.service';
+import { ContractService } from './services/contract.service';
 
 import { User } from './entities/user.entity';
 import { Role } from './entities/role.entity';
@@ -49,6 +51,15 @@ import { ProcurementInquiry } from './entities/procurement-inquiry.entity';
 import { Itinerary } from './entities/itinerary.entity';
 import { RegionOp } from './entities/region-op.entity';
 import { Notification } from './entities/notification.entity';
+import { Contract } from './entities/contract.entity';
+import { ContractFile } from './entities/contract-file.entity';
+import { ContractAudit } from './entities/contract-audit.entity';
+import { ContractVersion } from './entities/contract-version.entity';
+import { ContractTemplate } from './entities/contract-template.entity';
+import { ContractReminder } from './entities/contract-reminder.entity';
+import { ContractAiTask } from './entities/contract-ai-task.entity';
+import { ContractAiIssue } from './entities/contract-ai-issue.entity';
+import { ContractOperationLog } from './entities/contract-operation-log.entity';
 
 const jwtSecret = process.env.JWT_SECRET || 'your-secret-key';
 
@@ -78,6 +89,15 @@ const jwtSecret = process.env.JWT_SECRET || 'your-secret-key';
         Itinerary,
         RegionOp,
         Notification,
+        Contract,
+        ContractFile,
+        ContractAudit,
+        ContractVersion,
+        ContractTemplate,
+        ContractReminder,
+        ContractAiTask,
+        ContractAiIssue,
+        ContractOperationLog,
       ],
       synchronize: true,
       logging: true,
@@ -103,6 +123,15 @@ const jwtSecret = process.env.JWT_SECRET || 'your-secret-key';
       Itinerary,
       RegionOp,
       Notification,
+      Contract,
+      ContractFile,
+      ContractAudit,
+      ContractVersion,
+      ContractTemplate,
+      ContractReminder,
+      ContractAiTask,
+      ContractAiIssue,
+      ContractOperationLog,
     ]),
   ],
   controllers: [
@@ -120,6 +149,7 @@ const jwtSecret = process.env.JWT_SECRET || 'your-secret-key';
     NotificationController,
     DashboardController,
     FileController,
+    ContractController,
   ],
   providers: [
     AuthService,
@@ -135,6 +165,7 @@ const jwtSecret = process.env.JWT_SECRET || 'your-secret-key';
     RegionOpService,
     NotificationService,
     FileService,
+    ContractService,
   ],
 })
 export class AppModule {}

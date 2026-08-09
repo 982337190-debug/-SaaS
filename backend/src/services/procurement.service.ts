@@ -6,6 +6,7 @@ import { ProcurementInquiry, InquiryStatus } from '../entities/procurement-inqui
 import { Team } from '../entities/team.entity';
 import { Resource } from '../entities/resource.entity';
 import { ResourceType } from '../entities/quote-day-resource.entity';
+import { User, UserStatus } from '../entities/user.entity';
 import { CreateProcurementDto, UpdateProcurementDto, CreateInquiryDto } from '../dto/procurement.dto';
 
 @Injectable()
@@ -19,10 +20,13 @@ export class ProcurementService {
     private teamRepository: Repository<Team>,
     @InjectRepository(Resource)
     private resourceRepository: Repository<Resource>,
+    @InjectRepository(User)
+    private userRepository: Repository<User>,
   ) {}
 
   async create(createProcurementDto: CreateProcurementDto, userId: string) {
     const { type, name, city, start_date, end_date, resource_id, supplier, team_id, quantity, remarks } = createProcurementDto;
+    const operatorId = await this.resolveOperatorId(userId);
     
     const team = await this.teamRepository.findOne({ where: { id: team_id } });
     if (!team) {
@@ -54,7 +58,7 @@ export class ProcurementService {
     if (procurement.status === ProcurementStatus.PENDING) {
       const inquiry = this.procurementInquiryRepository.create({
         procurement_id: procurement.id,
-        operator_id: userId,
+        operator_id: operatorId,
         source: 'OP录入',
         content: `${name} 询价发起`,
         status: InquiryStatus.INITIATED,
@@ -111,10 +115,11 @@ export class ProcurementService {
 
   async addInquiry(id: string, createInquiryDto: CreateInquiryDto, userId: string) {
     const procurement = await this.findOne(id);
+    const operatorId = await this.resolveOperatorId(userId);
     
     const inquiry = this.procurementInquiryRepository.create({
       procurement_id: id,
-      operator_id: userId,
+      operator_id: operatorId,
       source: createInquiryDto.source,
       content: createInquiryDto.content,
       quoted_price: createInquiryDto.quoted_price,
@@ -164,5 +169,25 @@ export class ProcurementService {
     const booked = await this.procurementRepository.count({ where: { status: ProcurementStatus.BOOKED } });
     
     return { total, pending, inquiring, booked };
+  }
+
+  private async resolveOperatorId(userId?: string) {
+    if (userId) {
+      const existingUser = await this.userRepository.findOne({ where: { id: userId } });
+      if (existingUser) {
+        return existingUser.id;
+      }
+    }
+
+    const fallbackUser = await this.userRepository.findOne({
+      where: { status: UserStatus.ACTIVE },
+      order: { created_at: 'ASC' },
+    });
+
+    if (!fallbackUser) {
+      throw new BadRequestException('系统中没有可用的操作人');
+    }
+
+    return fallbackUser.id;
   }
 }

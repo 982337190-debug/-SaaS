@@ -29,6 +29,7 @@ async function initData(app: any) {
       { name: '行程管理', code: 'itinerary:manage', module: 'operation' },
       { name: '客户管理', code: 'customer:manage', module: 'sales' },
       { name: '区域配置', code: 'region:manage', module: 'system' },
+      { name: '合同管理', code: 'contract:manage', module: 'purchase' },
     ]);
     
     const hashedPassword = await bcrypt.hash('admin123', 10);

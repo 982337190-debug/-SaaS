@@ -25,6 +25,38 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## 项目启动
+
+先准备环境变量：
+
+```bash
+cp .env.example .env
+```
+
+需要至少配置下面两项，合同 AI 审核才会走真实 Dify Workflow：
+
+```bash
+DIFY_BASE_URL=https://your-dify-domain/v1
+DIFY_WORKFLOW_API_KEY=app-xxxx
+```
+
+可选配置：
+
+```bash
+# Workflow 里接收文件的 input 名称，默认 contract_file
+DIFY_WORKFLOW_FILE_INPUT_NAME=contract_file
+
+# 透传给 Dify 的 user 标识前缀
+DIFY_WORKFLOW_USER_PREFIX=contract-audit
+```
+
+说明：
+
+- 后端会调用 `POST /workflows/run` 发起合同 AI 审核。
+- 查询任务状态时会优先请求 `GET /workflows/run/{workflow_run_id}`，并兼容回退到旧路径。
+- 如果合同存在公网可访问的文件 URL，会按 Dify document remote_url 方式一起传入。
+- 如果没有合同文件，Workflow 仍会收到合同结构化字段和合同摘要文本。
+
 ## Project setup
 
 ```bash

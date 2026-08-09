@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { Customer } from './customer.entity';
 import { User } from './user.entity';
 import { QuoteDay } from './quote-day.entity';
@@ -30,6 +30,7 @@ export class Quote {
   name: string;
 
   @ManyToOne(() => Customer)
+  @JoinColumn({ name: 'customer_id' })
   customer: Customer;
 
   @Column()
@@ -63,6 +64,7 @@ export class Quote {
   remarks: string;
 
   @ManyToOne(() => User)
+  @JoinColumn({ name: 'created_by_id' })
   created_by: User;
 
   @Column()

@@ -45,6 +45,8 @@ export class FileController {
       '.jpeg': 'image/jpeg',
       '.png': 'image/png',
       '.gif': 'image/gif',
+      '.webp': 'image/webp',
+      '.bmp': 'image/bmp',
       '.csv': 'text/csv',
     };
     return mimeTypes[ext] || 'application/octet-stream';

@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { Customer } from './customer.entity';
 import { User } from './user.entity';
 import { Quote } from './quote.entity';
@@ -21,12 +21,14 @@ export class Team {
   team_no: string;
 
   @ManyToOne(() => Customer)
+  @JoinColumn({ name: 'customer_id' })
   customer: Customer;
 
   @Column()
   customer_id: string;
 
   @ManyToOne(() => Quote)
+  @JoinColumn({ name: 'quote_id' })
   quote: Quote;
 
   @Column({ nullable: true })
@@ -39,6 +41,7 @@ export class Team {
   people: number;
 
   @ManyToOne(() => User)
+  @JoinColumn({ name: 'op_id' })
   op: User;
 
   @Column({ nullable: true })

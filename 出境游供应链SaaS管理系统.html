@@ -161,6 +161,178 @@ body {
 }
 .page-body { flex: 1; padding: 24px 28px; overflow-y: auto; }
 
+/* ========== Work Tabs ========== */
+.work-tabs {
+  background: #fff;
+  border-bottom: 1px solid var(--border-light);
+  padding: 10px 18px 0;
+  position: sticky;
+  top: 60px;
+  z-index: 45;
+}
+.work-tabs-scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+.work-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 132px;
+  max-width: 220px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  background: #F8FBFF;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 -1px 0 rgba(74, 144, 217, 0.02);
+}
+.work-tab:hover {
+  background: #F2F8FF;
+  color: var(--primary-dark);
+}
+.work-tab.active {
+  background: #fff;
+  color: var(--primary-dark);
+  border-color: var(--primary-lighter);
+  box-shadow: 0 4px 14px rgba(74, 144, 217, 0.08);
+}
+.work-tab-title {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  font-weight: 500;
+}
+.work-tab-action {
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-light);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.work-tab-action:hover {
+  background: var(--bg-hover);
+  color: var(--primary-dark);
+}
+.work-tab-action.close:hover {
+  background: #FFF1F0;
+  color: var(--danger);
+}
+
+/* ========== Floating service button ========== */
+.customer-service-btn {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--text-white);
+  box-shadow: 0 10px 24px rgba(46, 123, 196, 0.28);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  cursor: pointer;
+  z-index: 120;
+  transition: var(--transition);
+}
+.customer-service-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(46, 123, 196, 0.34);
+}
+.customer-service-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+.customer-service-text {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+}
+.customer-service-modal {
+  width: min(420px, calc(100vw - 24px));
+  max-width: 420px;
+  height: min(760px, calc(100vh - 48px));
+  max-height: 760px;
+  border-radius: 20px;
+}
+.customer-service-modal .modal-header {
+  padding: 16px 18px;
+}
+.customer-service-modal .modal-body {
+  padding: 0;
+  background: #F8FBFF;
+}
+.customer-service-frame {
+  width: 100%;
+  height: 100%;
+  min-height: 580px;
+  border: none;
+  background: #fff;
+}
+.customer-service-empty {
+  height: 100%;
+  min-height: 580px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 32px 24px;
+  text-align: center;
+}
+.customer-service-empty-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #E3F2FD, #F0F7FF);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+.customer-service-empty-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.customer-service-empty-desc {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 280px;
+}
+.customer-service-empty-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.customer-service-hint {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
 /* ========== Page visibility ========== */
 .page { display: none; }
 .page.active { display: block; animation: fadeIn 0.3s ease; }
@@ -535,6 +707,94 @@ tbody tr:last-child td { border-bottom: none; }
 .action-btns { display: flex; gap: 4px; }
 .action-btns .btn-text { font-size: 13px; padding: 4px 8px; }
 
+/* ========== Contract Module ========== */
+.contract-panels {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.contract-panel-chip {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 13px;
+  font-weight: 500;
+}
+.contract-panel-chip.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+.contract-subpanel { display: none; }
+.contract-subpanel.active { display: block; }
+.contract-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.contract-summary-card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 20px;
+  border-left: 4px solid var(--primary);
+}
+.contract-summary-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+.contract-summary-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+.contract-summary-desc {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+.contract-form-section {
+  background: #FAFCFE;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.contract-file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.contract-file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+.contract-preview-box {
+  min-height: 260px;
+  border-radius: var(--radius);
+  border: 1px dashed var(--primary-lighter);
+  background: linear-gradient(135deg, #F8FBFF, #FFFFFF);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  padding: 24px;
+  text-align: center;
+}
+
 /* ========== Info List ========== */
 .info-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
 .info-item {
@@ -567,8 +827,19 @@ tbody tr:last-child td { border-bottom: none; }
   .sidebar { width: 60px; }
   .sidebar-logo span, .nav-item span:not(.nav-icon), .nav-group-title, .sidebar-footer { display: none; }
   .main-content { margin-left: 60px; }
+  .work-tabs { padding: 8px 10px 0; }
+  .work-tab { min-width: 110px; }
   .form-grid { grid-template-columns: 1fr; }
   .stat-grid { grid-template-columns: 1fr; }
+  .contract-summary-grid { grid-template-columns: 1fr; }
+  .customer-service-btn {
+    right: 16px;
+    bottom: 16px;
+    width: 54px;
+    height: 54px;
+  }
+  .customer-service-icon { font-size: 18px; }
+  .customer-service-text { font-size: 11px; }
 }
 </style>
 </head>
@@ -598,6 +869,9 @@ tbody tr:last-child td { border-bottom: none; }
         <div class="nav-item" data-page="procurement" onclick="switchPage('procurement')">
           <span class="nav-icon">🛒</span><span>采购中心</span>
         </div>
+        <div class="nav-item" data-page="contract" onclick="switchPage('contract')">
+          <span class="nav-icon">📝</span><span>合同中心</span>
+        </div>
         <div class="nav-item" data-page="itinerary" onclick="switchPage('itinerary')">
           <span class="nav-icon">🗺️</span><span>行程中心</span>
         </div>
@@ -620,6 +894,10 @@ tbody tr:last-child td { border-bottom: none; }
         <div class="icon-btn" title="通知">🔔</div>
         <div class="user-avatar">陈</div>
       </div>
+    </div>
+
+    <div class="work-tabs">
+      <div class="work-tabs-scroll" id="work-tabs"></div>
     </div>
 
     <div class="page-body">
@@ -883,6 +1161,186 @@ tbody tr:last-child td { border-bottom: none; }
                 </thead>
                 <tbody id="itin-tbody"></tbody>
               </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== 合同中心 ==================== -->
+      <div class="page" id="page-contract">
+        <div class="contract-summary-grid">
+          <div class="contract-summary-card">
+            <div class="contract-summary-label">合同总数</div>
+            <div class="contract-summary-value" id="contract-total-count">0</div>
+            <div class="contract-summary-desc">本月新增合同持续增长</div>
+          </div>
+          <div class="contract-summary-card" style="border-left-color:#FAAD14;">
+            <div class="contract-summary-label">待审核</div>
+            <div class="contract-summary-value" id="contract-audit-count" style="color:#D48806;">0</div>
+            <div class="contract-summary-desc">优先处理已提交合同</div>
+          </div>
+          <div class="contract-summary-card" style="border-left-color:#FF4D4F;">
+            <div class="contract-summary-label">30天内到期</div>
+            <div class="contract-summary-value" id="contract-expire-count" style="color:#CF1322;">0</div>
+            <div class="contract-summary-desc">关注续签与延期登记</div>
+          </div>
+          <div class="contract-summary-card" style="border-left-color:#52C41A;">
+            <div class="contract-summary-label">合同金额</div>
+            <div class="contract-summary-value" id="contract-amount-total" style="color:#389E0D;">¥0</div>
+            <div class="contract-summary-desc">含框架与项目合同金额</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">合同中心</span>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button class="btn btn-outline" type="button" onclick="switchContractPanel('statistics', document.querySelector('[data-contract-panel=statistics]'))">查看统计</button>
+              <button class="btn btn-primary" type="button" onclick="openNewContractModal()">+ 新增合同</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="contract-panels">
+              <button class="contract-panel-chip active" data-contract-panel="list" type="button" onclick="switchContractPanel('list', this)">合同列表</button>
+              <button class="contract-panel-chip" data-contract-panel="audit" type="button" onclick="switchContractPanel('audit', this)">合同审核</button>
+              <button class="contract-panel-chip" data-contract-panel="version" type="button" onclick="switchContractPanel('version', this)">合同版本</button>
+              <button class="contract-panel-chip" data-contract-panel="template" type="button" onclick="switchContractPanel('template', this)">合同模板</button>
+              <button class="contract-panel-chip" data-contract-panel="reminder" type="button" onclick="switchContractPanel('reminder', this)">到期提醒</button>
+              <button class="contract-panel-chip" data-contract-panel="statistics" type="button" onclick="switchContractPanel('statistics', this)">合同统计</button>
+            </div>
+
+            <div class="contract-subpanel active" id="contract-panel-list">
+              <div class="toolbar">
+                <div class="search-box">
+                  <span class="search-icon">🔍</span>
+                  <input type="text" placeholder="搜索合同编号 / 合同名称 / 供应商..." oninput="filterContracts(this.value)">
+                </div>
+                <div class="filter-chips">
+                  <div class="filter-chip active" onclick="filterContractStatus('', this)">全部</div>
+                  <div class="filter-chip" onclick="filterContractStatus('草稿', this)">草稿</div>
+                <div class="filter-chip" onclick="filterContractStatus('待AI审核', this)">待AI审核</div>
+                <div class="filter-chip" onclick="filterContractStatus('AI审核中', this)">AI审核中</div>
+                <div class="filter-chip" onclick="filterContractStatus('待人工审核', this)">待人工审核</div>
+                  <div class="filter-chip" onclick="filterContractStatus('审核驳回', this)">驳回</div>
+                  <div class="filter-chip" onclick="filterContractStatus('已通过', this)">已通过</div>
+                  <div class="filter-chip" onclick="filterContractStatus('生效中', this)">生效中</div>
+                </div>
+              </div>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>合同编号</th>
+                      <th>合同名称</th>
+                      <th>合同类型</th>
+                      <th>供应商</th>
+                      <th>资源类型</th>
+                      <th>合同金额</th>
+                      <th>付款方式</th>
+                      <th>合同期限</th>
+                      <th>当前版本</th>
+                      <th>状态</th>
+                      <th>负责人</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id="contract-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="contract-subpanel" id="contract-panel-audit">
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>合同编号</th>
+                      <th>合同名称</th>
+                      <th>供应商</th>
+                      <th>合同金额</th>
+                      <th>付款方式</th>
+                      <th>提交人</th>
+                      <th>当前节点</th>
+                      <th>审核状态</th>
+                      <th>提交时间</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id="contract-audit-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="contract-subpanel" id="contract-panel-version">
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>合同编号</th>
+                      <th>合同名称</th>
+                      <th>版本号</th>
+                      <th>修改说明</th>
+                      <th>上传人</th>
+                      <th>上传时间</th>
+                      <th>状态</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id="contract-version-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="contract-subpanel" id="contract-panel-template">
+              <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
+                <button class="btn btn-primary" type="button" onclick="openTemplateModal()">+ 新增模板</button>
+              </div>
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>模板名称</th>
+                      <th>合同类型</th>
+                      <th>资源类型</th>
+                      <th>模板文件</th>
+                      <th>版本</th>
+                      <th>状态</th>
+                      <th>创建人</th>
+                      <th>更新时间</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id="contract-template-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="contract-subpanel" id="contract-panel-reminder">
+              <div class="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>合同名称</th>
+                      <th>供应商</th>
+                      <th>结束日期</th>
+                      <th>剩余天数</th>
+                      <th>提醒节点</th>
+                      <th>负责人</th>
+                      <th>提醒状态</th>
+                      <th>操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id="contract-reminder-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="contract-subpanel" id="contract-panel-statistics">
+              <div class="info-list" id="contract-statistics-cards"></div>
+              <div class="section-title">状态分布</div>
+              <div id="contract-statistics-status" style="display:flex;flex-direction:column;gap:12px;"></div>
+              <div class="section-title">类型分布</div>
+              <div id="contract-statistics-type" style="display:flex;flex-direction:column;gap:12px;"></div>
             </div>
           </div>
         </div>
@@ -1219,33 +1677,457 @@ tbody tr:last-child td { border-bottom: none; }
   </div>
 </div>
 
+<!-- ==================== Modal: New Contract ==================== -->
+<div class="modal-overlay" id="modal-new-contract">
+  <div class="modal modal-xl">
+    <div class="modal-header">
+      <span class="modal-title">新建合同</span>
+      <button class="modal-close" onclick="closeModal('modal-new-contract')">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="contract-form-section">
+        <div class="section-title" style="margin-top:0;">步骤1：基础信息</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">合同名称 <span class="req">*</span></label>
+            <input id="contract-name" class="form-input" placeholder="请输入合同名称">
+          </div>
+          <div class="form-group">
+            <label class="form-label">合同类型 <span class="req">*</span></label>
+            <select id="contract-type" class="form-select" onchange="toggleContractTypeFields()">
+              <option value="框架合同">框架合同</option>
+              <option value="项目合同">项目合同</option>
+              <option value="采购合同">采购合同</option>
+              <option value="补充协议">补充协议</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">合同来源 <span class="req">*</span></label>
+            <select id="contract-source" class="form-select">
+              <option value="我方模板">我方模板</option>
+              <option value="供应商模板">供应商模板</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">供应商 <span class="req">*</span></label>
+            <input id="contract-supplier" class="form-input" placeholder="请输入供应商名称">
+          </div>
+          <div class="form-group">
+            <label class="form-label">资源类型 <span class="req">*</span></label>
+            <select id="contract-resource-types" class="form-select" multiple size="4">
+              <option value="酒店">酒店</option>
+              <option value="车辆">车辆</option>
+              <option value="餐饮">餐饮</option>
+              <option value="导游">导游</option>
+              <option value="景点门票">景点门票</option>
+              <option value="综合地接">综合地接</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">负责人 <span class="req">*</span></label>
+            <input id="contract-owner" class="form-input" placeholder="例如：陈雨">
+          </div>
+        </div>
+      </div>
+
+      <div class="contract-form-section">
+        <div class="section-title" style="margin-top:0;">步骤2：业务关联</div>
+        <div id="contract-project-fields" class="form-grid" style="display:none;">
+          <div class="form-group">
+            <label class="form-label">团队项目</label>
+            <input id="contract-project-name" class="form-input" placeholder="请输入团队项目名称">
+          </div>
+          <div class="form-group">
+            <label class="form-label">采购订单</label>
+            <input id="contract-order-name" class="form-input" placeholder="请输入采购订单">
+          </div>
+          <div class="form-group full">
+            <label class="form-label">报价单</label>
+            <input id="contract-quotation-name" class="form-input" placeholder="请输入关联报价单">
+          </div>
+        </div>
+        <div id="contract-framework-fields" class="form-grid">
+          <div class="form-group">
+            <label class="form-label">合作区域</label>
+            <input id="contract-area" class="form-input" placeholder="例如：日本关东/关西">
+          </div>
+          <div class="form-group">
+            <label class="form-label">年度预计采购金额</label>
+            <input id="contract-annual-amount" class="form-input" type="number" placeholder="请输入金额">
+          </div>
+          <div class="form-group full">
+            <label class="form-label">合作范围说明</label>
+            <textarea id="contract-scope" class="form-textarea" rows="3" placeholder="请输入合作范围说明"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="contract-form-section">
+        <div class="section-title" style="margin-top:0;">步骤3：金额与付款方式</div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">合同金额</label>
+            <input id="contract-amount" class="form-input" type="number" placeholder="请输入合同金额">
+          </div>
+          <div class="form-group">
+            <label class="form-label">币种</label>
+            <select id="contract-currency" class="form-select">
+              <option value="CNY">CNY</option>
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">税率</label>
+            <input id="contract-tax-rate" class="form-input" type="number" placeholder="例如 6">
+          </div>
+          <div class="form-group">
+            <label class="form-label">付款方式</label>
+            <select id="contract-payment-type" class="form-select" onchange="toggleContractPaymentFields()">
+              <option value="预付款">预付款</option>
+              <option value="账期付款">账期付款</option>
+            </select>
+          </div>
+          <div id="contract-advance-fields" class="form-group">
+            <label class="form-label">预付比例(%)</label>
+            <input id="contract-advance-ratio" class="form-input" type="number" placeholder="例如 30">
+          </div>
+          <div id="contract-advance-condition" class="form-group">
+            <label class="form-label">尾款支付条件</label>
+            <input id="contract-tail-condition" class="form-input" placeholder="例如 服务完成后7天支付">
+          </div>
+          <div id="contract-cycle-type-wrap" class="form-group" style="display:none;">
+            <label class="form-label">账期类型</label>
+            <select id="contract-cycle-type" class="form-select">
+              <option value="出团后">出团后</option>
+              <option value="回团后">回团后</option>
+              <option value="服务完成后">服务完成后</option>
+            </select>
+          </div>
+          <div id="contract-cycle-days-wrap" class="form-group" style="display:none;">
+            <label class="form-label">账期天数</label>
+            <input id="contract-cycle-days" class="form-input" type="number" placeholder="例如 15">
+          </div>
+          <div class="form-group">
+            <label class="form-label">开始日期</label>
+            <input id="contract-start-date" class="form-input" type="date">
+          </div>
+          <div class="form-group">
+            <label class="form-label">结束日期</label>
+            <input id="contract-end-date" class="form-input" type="date">
+          </div>
+        </div>
+      </div>
+
+      <div class="contract-form-section">
+        <div class="section-title" style="margin-top:0;">步骤4：合同文件</div>
+        <div class="contract-file-list" id="new-contract-file-list"></div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px;">
+          <input id="new-contract-file-input" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.csv,.jpg,.jpeg,.png,.gif,.webp,.bmp" style="display:none;" onchange="handleNewContractFileSelected(event)">
+          <button class="btn btn-outline btn-sm" type="button" onclick="triggerNewContractFileUpload()">上传附件</button>
+          <span style="font-size:12px;color:var(--text-light);">支持 Word、Excel、PDF、图片等格式，单次上传 1 个文件</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" type="button" onclick="closeModal('modal-new-contract')">取消</button>
+      <button class="btn btn-outline" type="button" onclick="saveContractDraft()">保存草稿</button>
+      <button class="btn btn-primary" type="button" onclick="submitContractForAudit()">提交审核</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== Modal: Contract Detail ==================== -->
+<div class="modal-overlay" id="modal-contract-detail">
+  <div class="modal modal-xl">
+    <div class="modal-header">
+      <span class="modal-title" id="contract-detail-title">合同详情</span>
+      <button class="modal-close" onclick="closeModal('modal-contract-detail')">×</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px;border:1px solid var(--border);border-radius:12px;background:#F8FBFF;margin-bottom:16px;">
+        <div style="flex:1;min-width:360px;">
+          <div id="contract-detail-summary" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;"></div>
+        </div>
+        <div id="contract-detail-actions" style="display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap;justify-content:flex-end;min-width:220px;"></div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab(this,'contract-detail-tab-info')">合同信息</div>
+        <div class="tab" onclick="switchTab(this,'contract-detail-tab-files')">合同文件</div>
+        <div class="tab" onclick="switchTab(this,'contract-detail-tab-ai')">AI审核结果</div>
+        <div class="tab" onclick="switchTab(this,'contract-detail-tab-flow')">审核流程</div>
+        <div class="tab" onclick="switchTab(this,'contract-detail-tab-version')">合同版本</div>
+        <div class="tab" onclick="switchTab(this,'contract-detail-tab-log')">操作日志</div>
+      </div>
+
+      <div class="tab-content active" id="contract-detail-tab-info">
+        <div class="info-list" id="contract-detail-basic"></div>
+      </div>
+
+      <div class="tab-content" id="contract-detail-tab-files">
+        <div class="contract-preview-box" id="contract-preview-box">合同文件预览区域<br>支持后续接 PDF/图片预览</div>
+        <div class="table-wrapper" style="margin-top:16px;">
+          <table>
+            <thead><tr><th>文件名称</th><th>文件类型</th><th>文件大小</th><th>上传人</th><th>上传时间</th><th>版本号</th><th>操作</th></tr></thead>
+            <tbody id="contract-detail-files"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-content" id="contract-detail-tab-ai">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:16px;">
+          <div class="contract-summary-card">
+            <div class="contract-summary-label">风险评分</div>
+            <div class="contract-summary-value" id="contract-ai-score">-</div>
+            <div class="contract-summary-desc" id="contract-ai-level">待AI审核</div>
+          </div>
+          <div class="contract-summary-card" style="border-left-color:#722ED1;">
+            <div class="contract-summary-label">审核结论</div>
+            <div class="contract-summary-value" style="font-size:24px;color:#531DAB;" id="contract-ai-result">-</div>
+            <div class="contract-summary-desc" id="contract-ai-summary">请先发起 AI 审核</div>
+          </div>
+        </div>
+        <div class="section-title">风险问题列表</div>
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>风险类型</th><th>风险等级</th><th>风险描述</th><th>合同原文</th><th>修改建议</th></tr></thead>
+            <tbody id="contract-ai-issues"></tbody>
+          </table>
+        </div>
+        <div class="section-title">AI提取合同信息</div>
+        <div class="info-list" id="contract-ai-extracted"></div>
+      </div>
+
+      <div class="tab-content" id="contract-detail-tab-flow">
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>节点名称</th><th>处理人</th><th>状态</th><th>处理时间</th><th>意见</th></tr></thead>
+            <tbody id="contract-detail-flow"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-content" id="contract-detail-tab-version">
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>版本号</th><th>修改说明</th><th>上传人</th><th>时间</th></tr></thead>
+            <tbody id="contract-detail-versions"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-content" id="contract-detail-tab-log">
+        <div class="table-wrapper">
+          <table>
+            <thead><tr><th>操作人</th><th>操作类型</th><th>操作内容</th><th>时间</th></tr></thead>
+            <tbody id="contract-detail-logs"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" type="button" onclick="closeModal('modal-contract-detail')">关闭</button>
+      <button class="btn btn-outline" type="button" onclick="openVersionModal(activeContractId)">创建版本</button>
+      <button class="btn btn-primary" type="button" onclick="downloadContractFile()">下载合同</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== Modal: Contract Audit ==================== -->
+<div class="modal-overlay" id="modal-contract-audit">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <span class="modal-title">合同审核</span>
+      <button class="modal-close" onclick="closeModal('modal-contract-audit')">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="info-list" id="contract-audit-basic"></div>
+      <div class="section-title">审核意见</div>
+      <textarea id="contract-audit-comment" class="form-textarea" rows="5" placeholder="请输入审核意见或驳回原因"></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" type="button" onclick="closeModal('modal-contract-audit')">取消</button>
+      <button class="btn btn-danger" type="button" onclick="handleContractAudit('reject')">驳回</button>
+      <button class="btn btn-primary" type="button" onclick="handleContractAudit('pass')">审核通过</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== Modal: Contract Version ==================== -->
+<div class="modal-overlay" id="modal-contract-version">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <span class="modal-title">创建合同版本</span>
+      <button class="modal-close" onclick="closeModal('modal-contract-version')">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">版本号</label>
+          <input id="contract-version-no" class="form-input" placeholder="例如 V2.0">
+        </div>
+        <div class="form-group">
+          <label class="form-label">上传新版合同文件</label>
+          <input id="contract-version-file" class="form-input" placeholder="例如 法国地接合作合同_V2.0.pdf">
+        </div>
+        <div class="form-group full">
+          <label class="form-label">修改原因</label>
+          <textarea id="contract-version-reason" class="form-textarea" rows="4" placeholder="请输入修改原因"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" type="button" onclick="closeModal('modal-contract-version')">取消</button>
+      <button class="btn btn-primary" type="button" onclick="saveContractVersion()">保存版本</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== Modal: Contract Template ==================== -->
+<div class="modal-overlay" id="modal-contract-template">
+  <div class="modal modal-lg">
+    <div class="modal-header">
+      <span class="modal-title">新增合同模板</span>
+      <button class="modal-close" onclick="closeModal('modal-contract-template')">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label">模板名称</label>
+          <input id="template-name" class="form-input" placeholder="请输入模板名称">
+        </div>
+        <div class="form-group">
+          <label class="form-label">合同类型</label>
+          <select id="template-type" class="form-select">
+            <option value="框架合同">框架合同</option>
+            <option value="项目合同">项目合同</option>
+            <option value="采购合同">采购合同</option>
+            <option value="补充协议">补充协议</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">资源类型</label>
+          <input id="template-resources" class="form-input" placeholder="例如 酒店、导游、车辆">
+        </div>
+        <div class="form-group">
+          <label class="form-label">模板文件</label>
+          <input id="template-file" class="form-input" placeholder="例如 框架合作模板_V1.0.docx">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" type="button" onclick="closeModal('modal-contract-template')">取消</button>
+      <button class="btn btn-primary" type="button" onclick="saveContractTemplate()">保存模板</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-customer-service">
+  <div class="modal customer-service-modal">
+    <div class="modal-header">
+      <span class="modal-title">智能客服</span>
+      <button class="modal-close" onclick="closeModal('modal-customer-service')">×</button>
+    </div>
+    <div class="modal-body">
+      <iframe id="customer-service-frame" class="customer-service-frame" title="Dify 智能客服" style="display:none;"></iframe>
+      <div id="customer-service-empty" class="customer-service-empty">
+        <div class="customer-service-empty-icon">💬</div>
+        <div class="customer-service-empty-title">配置 Dify 聊天地址</div>
+        <div class="customer-service-empty-desc">
+          请把你在 Dify 发布后的公开聊天链接填进来，配置完成后，这里就会直接显示知识库聊天窗口。
+        </div>
+        <div class="customer-service-empty-actions">
+          <button class="btn btn-primary" type="button" onclick="configureDifyChatUrl()">配置地址</button>
+          <button class="btn btn-outline" type="button" onclick="clearDifyChatUrl()">清空配置</button>
+        </div>
+        <div class="customer-service-hint">示例：`https://your-dify-domain/chat/xxxxxx`</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" type="button" onclick="configureDifyChatUrl()">修改地址</button>
+      <button class="btn btn-primary" type="button" onclick="openDifyInNewWindow()">新窗口打开</button>
+    </div>
+  </div>
+</div>
+
+<button class="customer-service-btn" type="button" title="智能客服" onclick="openCustomerService()">
+  <span class="customer-service-icon">💬</span>
+  <span class="customer-service-text">客服</span>
+</button>
+
 <script>
 // ========== API Helpers ==========
+const DIFY_CHAT_STORAGE_KEY = 'dify_chat_url';
+const DIFY_DEFAULT_CHAT_URL = '';
+const isFilePreview = window.location.protocol === 'file:';
+const isBackendLocalPreview = ['127.0.0.1', 'localhost'].includes(window.location.hostname) && window.location.port === '3000';
+const API_BASE = isFilePreview ? 'http://127.0.0.1:3000' : (isBackendLocalPreview ? '' : '/api');
+
+function getApiUrl(url) {
+  if (/^https?:\/\//.test(url)) return url;
+  return `${API_BASE}${url.startsWith('/') ? url : `/${url}`}`;
+}
+
+async function parseApiResponse(res) {
+  const text = await res.text();
+  let json;
+  try {
+    json = JSON.parse(text);
+  } catch {
+    throw new Error('接口返回格式异常，请检查接口地址配置');
+  }
+
+  if (!res.ok) {
+    throw new Error(json?.message || `接口请求失败（${res.status}）`);
+  }
+
+  if (json && typeof json === 'object' && 'code' in json && json.code !== 200) {
+    throw new Error(json.message || '接口请求失败');
+  }
+
+  return json;
+}
+
 const API = {
   async get(url) {
-    const res = await fetch(url);
-    const json = await res.json();
+    const res = await fetch(getApiUrl(url));
+    const json = await parseApiResponse(res);
     return json.data || json;
   },
   async post(url, body) {
-    const res = await fetch(url, {
+    const res = await fetch(getApiUrl(url), {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     });
-    return await res.json();
+    return await parseApiResponse(res);
   },
   async put(url, body) {
-    const res = await fetch(url, {
+    const res = await fetch(getApiUrl(url), {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     });
-    return await res.json();
+    return await parseApiResponse(res);
   },
   async del(url) {
-    const res = await fetch(url, { method: 'DELETE' });
-    return await res.json();
+    const res = await fetch(getApiUrl(url), { method: 'DELETE' });
+    return await parseApiResponse(res);
+  },
+  async uploadFile(url, file, extraFields = {}) {
+    const formData = new FormData();
+    formData.append('file', file);
+    Object.entries(extraFields).forEach(([key, value]) => {
+      if (value != null && value !== '') {
+        formData.append(key, value);
+      }
+    });
+    const res = await fetch(getApiUrl(url), {
+      method: 'POST',
+      body: formData,
+    });
+    return await parseApiResponse(res);
   },
 };
 
@@ -1305,6 +2187,16 @@ const itinData = [
   { id:'TM20260420006', customer:'广州广之旅', name:'巴厘岛5日浪漫海岛游', dateRange:'2026-04-20 至 04-24', days:5, status:'编辑中', statusClass:'badge-draft' },
 ];
 
+let activeContractId = '';
+let activeContractDetail = null;
+let activeContractAiTaskId = '';
+let contractFilter = { search: '', status: '' };
+let contractData = [];
+let contractAuditRecords = [];
+let contractVersionData = [];
+let contractTemplateData = [];
+let contractReminderData = [];
+
 const resourceLib = {
   hotel: [
     { name:'大阪新大谷酒店', grade:'五星', supplier:'JTB日本交通公社', price:'¥1,400/间/晚' },
@@ -1342,10 +2234,42 @@ const pageMeta = {
   quote: { module: '报价中心', page: '报价列表' },
   team: { module: '团队中心', page: '团队列表' },
   procurement: { module: '采购中心', page: '采购列表' },
+  contract: { module: '合同中心', page: '合同列表' },
   itinerary: { module: '行程中心', page: '行程列表' },
 };
 
+const pageLoaders = {
+  dashboard: async () => {},
+  quote: async () => { await loadQuotes(); await loadCustomers(); },
+  team: async () => { renderTeams(); },
+  procurement: async () => { renderProcurement(); },
+  contract: async () => { renderContractModule(); },
+  itinerary: async () => { renderItinerary(); },
+};
+
+let openTabs = ['dashboard'];
+let activePageId = 'dashboard';
+
+function renderWorkTabs() {
+  const container = document.getElementById('work-tabs');
+  container.innerHTML = openTabs.map(pageId => {
+    const meta = pageMeta[pageId];
+    const isActive = pageId === activePageId;
+    return `
+      <div class="work-tab ${isActive ? 'active' : ''}" onclick="switchPage('${pageId}')">
+        <span class="work-tab-title" title="${meta.page}">${meta.page}</span>
+        <button class="work-tab-action" title="刷新标签页" onclick="event.stopPropagation(); refreshTab('${pageId}')">↻</button>
+        <button class="work-tab-action close" title="关闭标签页" onclick="event.stopPropagation(); closeTab('${pageId}')">×</button>
+      </div>
+    `;
+  }).join('');
+}
+
 function switchPage(pageId) {
+  if (!openTabs.includes(pageId)) {
+    openTabs.push(pageId);
+  }
+  activePageId = pageId;
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + pageId).classList.add('active');
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -1353,6 +2277,33 @@ function switchPage(pageId) {
   const meta = pageMeta[pageId];
   document.getElementById('bc-module').textContent = meta.module;
   document.getElementById('bc-page').textContent = meta.page;
+  renderWorkTabs();
+}
+
+async function refreshTab(pageId) {
+  const loader = pageLoaders[pageId];
+  if (loader) {
+    await loader();
+  }
+  activePageId = pageId;
+  switchPage(pageId);
+  showToast(`${pageMeta[pageId].page}已刷新`);
+}
+
+function closeTab(pageId) {
+  if (!openTabs.includes(pageId)) return;
+  if (openTabs.length === 1) {
+    showToast('至少保留一个标签页', 'error');
+    return;
+  }
+  const closingIndex = openTabs.indexOf(pageId);
+  openTabs = openTabs.filter(id => id !== pageId);
+  if (activePageId === pageId) {
+    const nextPageId = openTabs[Math.max(closingIndex - 1, 0)] || openTabs[0];
+    switchPage(nextPageId);
+    return;
+  }
+  renderWorkTabs();
 }
 
 // ========== Modal ==========
@@ -1361,6 +2312,75 @@ function closeModal(id) { document.getElementById(id).classList.remove('show'); 
 document.querySelectorAll('.modal-overlay').forEach(overlay => {
   overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('show'); });
 });
+
+function openCustomerService() {
+  syncCustomerServiceFrame();
+  openModal('modal-customer-service');
+}
+
+function getDifyChatUrl() {
+  return localStorage.getItem(DIFY_CHAT_STORAGE_KEY) || DIFY_DEFAULT_CHAT_URL;
+}
+
+function setDifyChatUrl(url) {
+  const normalized = (url || '').trim();
+  if (!normalized) {
+    localStorage.removeItem(DIFY_CHAT_STORAGE_KEY);
+    return;
+  }
+  localStorage.setItem(DIFY_CHAT_STORAGE_KEY, normalized);
+}
+
+function syncCustomerServiceFrame() {
+  const url = getDifyChatUrl();
+  const frame = document.getElementById('customer-service-frame');
+  const empty = document.getElementById('customer-service-empty');
+  if (!url) {
+    frame.style.display = 'none';
+    frame.removeAttribute('src');
+    empty.style.display = 'flex';
+    return;
+  }
+  if (frame.dataset.src !== url) {
+    frame.src = url;
+    frame.dataset.src = url;
+  }
+  frame.style.display = 'block';
+  empty.style.display = 'none';
+}
+
+function configureDifyChatUrl() {
+  const current = getDifyChatUrl();
+  const input = window.prompt('请输入 Dify 公开聊天链接', current);
+  if (input === null) return;
+  const url = input.trim();
+  if (!url) {
+    alert('还没有填写地址，暂时无法加载聊天窗口。');
+    return;
+  }
+  if (!/^https?:\/\//.test(url)) {
+    alert('请输入完整的 http 或 https 链接。');
+    return;
+  }
+  setDifyChatUrl(url);
+  syncCustomerServiceFrame();
+  showToast('Dify 地址已保存');
+}
+
+function clearDifyChatUrl() {
+  localStorage.removeItem(DIFY_CHAT_STORAGE_KEY);
+  syncCustomerServiceFrame();
+  showToast('已清空 Dify 地址');
+}
+
+function openDifyInNewWindow() {
+  const url = getDifyChatUrl();
+  if (!url) {
+    configureDifyChatUrl();
+    return;
+  }
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
 
 // ========== Tab Switching ==========
 function switchTab(el, contentId) {
@@ -1573,11 +2593,1090 @@ async function createQuote(mode) {
 }
 
 async function loadCustomers() {
-  const result = await API.get('/customers?page=1&page_size=50');
-  customerList = result.data || result;
   const select = document.getElementById('new-quote-customer');
-  select.innerHTML = '<option value="">请选择客户</option>' +
-    customerList.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+  try {
+    const result = await API.get('/customers?page=1&page_size=50');
+    customerList = result.data || result;
+    select.innerHTML = '<option value="">请选择客户</option>' +
+      customerList.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+  } catch (error) {
+    customerList = [];
+    select.innerHTML = '<option value="">请选择客户</option>';
+    showToast(error.message || '客户列表加载失败', 'error');
+  }
+}
+
+// ========== Contract Module ==========
+let contractStatistics = { total: 0, active: 0, audit: 0, expireSoon: 0, amount: 0 };
+let contractModuleLoading = false;
+let newContractUploading = false;
+let pendingNewContractFile = null;
+
+function unwrapApiResult(result) {
+  return result?.data || result;
+}
+
+function getApiList(result) {
+  if (Array.isArray(result)) return result;
+  if (Array.isArray(result?.data)) return result.data;
+  if (Array.isArray(result?.items)) return result.items;
+  return [];
+}
+
+function getContractStatusText(status) {
+  const map = {
+    DRAFT: '草稿',
+    SUBMITTED: '待AI审核',
+    AUDITING: 'AI审核中',
+    PENDING_MANUAL_REVIEW: '待人工审核',
+    REJECTED: '审核驳回',
+    APPROVED: '已通过',
+    SIGNED: '待签署',
+    ACTIVE: '生效中',
+    EXPIRED: '已到期',
+    ARCHIVED: '已归档',
+    CANCELLED: '已作废',
+  };
+  return map[status] || status || '-';
+}
+
+function getContractStatusClass(status) {
+  const map = {
+    '草稿': 'badge-draft',
+    '待AI审核': 'badge-pending',
+    'AI审核中': 'badge-pending',
+    '待人工审核': 'badge-info',
+    '审核驳回': 'badge-expired',
+    '已通过': 'badge-confirmed',
+    '待签署': 'badge-info',
+    '生效中': 'badge-completed',
+    '已到期': 'badge-expired',
+    '已归档': 'badge-info',
+    '已作废': 'badge-expired',
+  };
+  return map[status] || 'badge-info';
+}
+
+function getContractTypeText(type) {
+  const map = {
+    FRAMEWORK: '框架合同',
+    PROJECT: '项目合同',
+    PURCHASE: '采购合同',
+    SUPPLEMENT: '补充协议',
+  };
+  return map[type] || type || '-';
+}
+
+function getContractSourceText(source) {
+  const map = {
+    OUR_TEMPLATE: '我方模板',
+    SUPPLIER_TEMPLATE: '供应商模板',
+  };
+  return map[source] || source || '-';
+}
+
+function getPaymentTypeText(type) {
+  const map = {
+    ADVANCE: '预付款',
+    ACCOUNT_PERIOD: '账期付款',
+  };
+  return map[type] || type || '-';
+}
+
+function getPaymentCycleTypeText(type) {
+  const map = {
+    DEPARTURE: '出团后',
+    RETURN: '回团后',
+    SERVICE_COMPLETE: '服务完成后',
+  };
+  return map[type] || '';
+}
+
+function toApiContractType(type) {
+  const map = {
+    '框架合同': 'FRAMEWORK',
+    '项目合同': 'PROJECT',
+    '采购合同': 'PURCHASE',
+    '补充协议': 'SUPPLEMENT',
+  };
+  return map[type] || 'FRAMEWORK';
+}
+
+function toApiContractSource(source) {
+  const map = {
+    '我方模板': 'OUR_TEMPLATE',
+    '供应商模板': 'SUPPLIER_TEMPLATE',
+  };
+  return map[source] || 'OUR_TEMPLATE';
+}
+
+function toApiPaymentType(type) {
+  const map = {
+    '预付款': 'ADVANCE',
+    '账期付款': 'ACCOUNT_PERIOD',
+  };
+  return map[type] || 'ADVANCE';
+}
+
+function toApiPaymentCycleType(type) {
+  const map = {
+    '出团后': 'DEPARTURE',
+    '回团后': 'RETURN',
+    '服务完成后': 'SERVICE_COMPLETE',
+  };
+  return map[type] || 'SERVICE_COMPLETE';
+}
+
+function getContractCurrentNode(statusText) {
+  const map = {
+    '草稿': '待编辑',
+    '待AI审核': '待发起AI审核',
+    'AI审核中': 'AI审核中',
+    '待人工审核': '人工审核',
+    '审核驳回': '待业务修改',
+    '已通过': '待签署',
+    '待签署': '待签署',
+    '生效中': '履约中',
+    '已到期': '到期归档',
+    '已归档': '已归档',
+    '已作废': '已作废',
+  };
+  return map[statusText] || '-';
+}
+
+function normalizeContract(item) {
+  const status = getContractStatusText(item.status);
+  return {
+    id: item.id,
+    no: item.contract_no,
+    name: item.contract_name,
+    type: getContractTypeText(item.contract_type),
+    source: getContractSourceText(item.source_type),
+    supplier: item.supplier_name || '-',
+    resourceTypes: item.resource_types || [],
+    amount: Number(item.amount || 0),
+    currency: item.currency || 'CNY',
+    payment: getPaymentTypeText(item.payment_type),
+    advanceRatio: item.advance_ratio,
+    cycleType: getPaymentCycleTypeText(item.payment_cycle_type),
+    cycleDays: item.payment_cycle_days,
+    startDate: item.start_date,
+    endDate: item.end_date,
+    version: item.current_version || 'V1.0',
+    status,
+    owner: item.owner_name || '-',
+    creator: item.created_by_name || item.owner_name || '-',
+    createdAt: item.created_at ? item.created_at.replace('T', ' ').slice(0, 16) : '-',
+    submittedAt: item.updated_at ? item.updated_at.replace('T', ' ').slice(0, 16) : '-',
+    currentNode: getContractCurrentNode(status),
+    scope: item.cooperation_scope || '-',
+    area: item.cooperation_area || '-',
+    projectName: item.project_name || '',
+    orderName: item.order_name || '',
+    quotationName: item.quotation_name || '',
+    preview: `${item.contract_name} ${item.current_version || 'V1.0'} / 合同文件`,
+  };
+}
+
+function normalizeReminder(item) {
+  const statusMap = {
+    OPEN: '待处理',
+    CLOSED: '已关闭',
+    DELAYED: '已延期',
+  };
+  return {
+    id: item.id,
+    contractId: item.contract_id,
+    contractName: item.contract_name,
+    supplier: item.supplier_name || '-',
+    endDate: item.end_date || '-',
+    remainDays: item.remain_days ?? '-',
+    reminderDays: item.reminder_days,
+    owner: item.owner_name || '-',
+    status: statusMap[item.status] || item.status || '-',
+  };
+}
+
+function normalizeTemplate(item) {
+  return {
+    id: item.id,
+    name: item.template_name,
+    type: getContractTypeText(item.contract_type),
+    resources: (item.resource_types || []).join('、'),
+    file: item.file_url,
+    version: item.version,
+    status: item.status === 'ACTIVE' ? '启用' : '停用',
+    creator: item.creator_name || item.creator || '-',
+    updatedAt: item.updated_at ? item.updated_at.replace('T', ' ').slice(0, 16) : '-',
+  };
+}
+
+function normalizeVersion(contract, item, index = 0) {
+  return {
+    contractId: contract.id,
+    contractNo: contract.no,
+    contractName: contract.name,
+    version: item.version_no,
+    reason: item.change_reason || '-',
+    user: item.creator_name || item.creator || '-',
+    time: item.created_at ? item.created_at.replace('T', ' ').slice(0, 16) : '-',
+    status: index === 0 ? '当前版本' : '历史版本',
+    file: item.file_id || '合同文件',
+  };
+}
+
+function getContractDateRange(contract) {
+  return `${contract.startDate || '-'} 至 ${contract.endDate || '-'}`;
+}
+
+function getContractPaymentText(contract) {
+  if (contract.payment === '预付款') {
+    return `${contract.payment} ${contract.advanceRatio || 0}%`;
+  }
+  if (contract.payment === '账期付款') {
+    return `${contract.cycleType || ''}${contract.cycleDays || 0}天`;
+  }
+  return contract.payment || '-';
+}
+
+function switchContractPanel(panelId, el) {
+  document.querySelectorAll('.contract-panel-chip').forEach(chip => chip.classList.remove('active'));
+  document.querySelectorAll('.contract-subpanel').forEach(panel => panel.classList.remove('active'));
+  if (el) el.classList.add('active');
+  document.getElementById(`contract-panel-${panelId}`).classList.add('active');
+}
+
+function filterContracts(val) {
+  contractFilter.search = val.trim();
+  renderContracts();
+}
+
+function filterContractStatus(status, el) {
+  contractFilter.status = status;
+  el.parentElement.querySelectorAll('.filter-chip').forEach(chip => chip.classList.remove('active'));
+  el.classList.add('active');
+  renderContracts();
+}
+
+async function loadContractVersionsSummary() {
+  const versionGroups = await Promise.all(contractData.map(async (contract) => {
+    try {
+      const result = await API.get(`/contracts/${contract.id}/versions`);
+      const versions = unwrapApiResult(result) || [];
+      return versions.map((item, index) => normalizeVersion(contract, item, index));
+    } catch {
+      return [];
+    }
+  }));
+  contractVersionData = versionGroups.flat().sort((a, b) => new Date(b.time) - new Date(a.time));
+}
+
+async function loadContractModuleData() {
+  if (contractModuleLoading) return;
+  contractModuleLoading = true;
+  try {
+    const [listResult, statisticsResult, reminderResult, auditResult, templateResult] = await Promise.all([
+      API.get('/contracts?page=1&page_size=100'),
+      API.get('/contracts/statistics'),
+      API.get('/contracts/reminders'),
+      API.get('/contracts/audit/list'),
+      API.get('/contracts/templates'),
+    ]);
+
+    contractData = getApiList(listResult).map(normalizeContract);
+    contractStatistics = unwrapApiResult(statisticsResult) || { total: 0, active: 0, audit: 0, expireSoon: 0, amount: 0 };
+    contractReminderData = getApiList(reminderResult).map(normalizeReminder);
+    contractTemplateData = getApiList(templateResult).map(normalizeTemplate);
+    contractAuditRecords = [];
+    const auditContracts = getApiList(auditResult).map(normalizeContract);
+    const auditMap = new Map(auditContracts.map(item => [item.id, item]));
+    contractData.forEach(item => {
+      if (auditMap.has(item.id)) {
+        Object.assign(item, auditMap.get(item.id));
+      }
+    });
+    await loadContractVersionsSummary();
+    renderContractOverview();
+    renderContracts();
+    renderContractAudits();
+    renderContractVersions();
+    renderContractTemplates();
+    renderContractReminders();
+    renderContractStatistics();
+  } catch (error) {
+    showToast(error.message || '合同模块数据加载失败', 'error');
+  } finally {
+    contractModuleLoading = false;
+  }
+}
+
+function renderContractOverview() {
+  document.getElementById('contract-total-count').textContent = contractStatistics.total || 0;
+  document.getElementById('contract-audit-count').textContent = contractStatistics.audit || 0;
+  document.getElementById('contract-expire-count').textContent = contractStatistics.expireSoon || 0;
+  document.getElementById('contract-amount-total').textContent = formatAmount(contractStatistics.amount || 0);
+}
+
+function getFilteredContracts() {
+  return contractData.filter(item => {
+    const searchPool = [item.no, item.name, item.supplier].filter(Boolean);
+    const matchSearch = !contractFilter.search || searchPool.some(text => text.includes(contractFilter.search));
+    const matchStatus = !contractFilter.status || item.status === contractFilter.status;
+    return matchSearch && matchStatus;
+  });
+}
+
+function renderContracts() {
+  const tbody = document.getElementById('contract-tbody');
+  const filtered = getFilteredContracts();
+  if (filtered.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="12"><div class="empty-state"><div class="empty-icon">📄</div>暂无匹配的合同数据</div></td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = filtered.map(item => `
+    <tr>
+      <td><span style="font-weight:600;color:var(--primary);">${item.no}</span></td>
+      <td>${item.name}</td>
+      <td>${item.type}</td>
+      <td>${item.supplier}</td>
+      <td>${item.resourceTypes.length ? item.resourceTypes.join('、') : '-'}</td>
+      <td style="font-weight:600;">${formatAmount(item.amount)}</td>
+      <td>${getContractPaymentText(item)}</td>
+      <td>${getContractDateRange(item)}</td>
+      <td>${item.version}</td>
+      <td><span class="badge ${getContractStatusClass(item.status)}">${item.status}</span></td>
+      <td>${item.owner}</td>
+      <td>
+        <div class="action-btns">
+          <button class="btn-text" onclick="viewContractDetail('${item.id}')">查看</button>
+          <button class="btn-text" onclick="openVersionModal('${item.id}')">版本</button>
+          ${['待人工审核', '审核驳回'].includes(item.status) ? `<button class="btn-text" onclick="openContractAuditModal('${item.id}')">审核</button>` : ''}
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function renderContractAudits() {
+  const tbody = document.getElementById('contract-audit-tbody');
+  const rows = contractData.filter(item => ['待AI审核', 'AI审核中', '待人工审核', '审核驳回'].includes(item.status));
+  if (rows.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="10"><div class="empty-state"><div class="empty-icon">🧾</div>暂无审核数据</div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = rows.map(item => `
+    <tr>
+      <td>${item.no}</td>
+      <td>${item.name}</td>
+      <td>${item.supplier}</td>
+      <td>${formatAmount(item.amount)}</td>
+      <td>${getContractPaymentText(item)}</td>
+      <td>${item.creator}</td>
+      <td>${item.currentNode || '-'}</td>
+      <td><span class="badge ${getContractStatusClass(item.status)}">${item.status}</span></td>
+      <td>${item.submittedAt || item.createdAt}</td>
+      <td><div class="action-btns"><button class="btn-text" onclick="viewContractDetail('${item.id}')">详情</button>${['待人工审核', '审核驳回'].includes(item.status) ? `<button class="btn-text" onclick="openContractAuditModal('${item.id}')">处理</button>` : ''}</div></td>
+    </tr>
+  `).join('');
+}
+
+function renderContractVersions() {
+  const tbody = document.getElementById('contract-version-tbody');
+  if (contractVersionData.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="8"><div class="empty-state"><div class="empty-icon">🗂️</div>暂无版本数据</div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = contractVersionData.map(item => `
+    <tr>
+      <td>${item.contractNo}</td>
+      <td>${item.contractName}</td>
+      <td>${item.version}</td>
+      <td>${item.reason}</td>
+      <td>${item.user}</td>
+      <td>${item.time}</td>
+      <td><span class="badge ${item.status === '当前版本' ? 'badge-confirmed' : 'badge-info'}">${item.status}</span></td>
+      <td><div class="action-btns"><button class="btn-text" onclick="downloadContractFile('${item.file}')">下载</button></div></td>
+    </tr>
+  `).join('');
+}
+
+function renderContractTemplates() {
+  const tbody = document.getElementById('contract-template-tbody');
+  if (contractTemplateData.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="9"><div class="empty-state"><div class="empty-icon">📚</div>暂无模板数据</div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = contractTemplateData.map(item => `
+    <tr>
+      <td>${item.name}</td>
+      <td>${item.type}</td>
+      <td>${item.resources || '-'}</td>
+      <td>${item.file}</td>
+      <td>${item.version}</td>
+      <td><span class="badge ${item.status === '启用' ? 'badge-confirmed' : 'badge-draft'}">${item.status}</span></td>
+      <td>${item.creator}</td>
+      <td>${item.updatedAt}</td>
+      <td><div class="action-btns"><button class="btn-text" onclick="copyTemplate('${item.id}')">复制</button><button class="btn-text" onclick="toggleTemplateStatus('${item.id}')">${item.status === '启用' ? '停用' : '启用'}</button></div></td>
+    </tr>
+  `).join('');
+}
+
+function renderContractReminders() {
+  const tbody = document.getElementById('contract-reminder-tbody');
+  if (contractReminderData.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="8"><div class="empty-state"><div class="empty-icon">⏰</div>暂无提醒数据</div></td></tr>';
+    return;
+  }
+  tbody.innerHTML = contractReminderData.map(item => `
+    <tr>
+      <td>${item.contractName}</td>
+      <td>${item.supplier}</td>
+      <td>${item.endDate}</td>
+      <td>${item.remainDays}天</td>
+      <td>提前${item.reminderDays}天</td>
+      <td>${item.owner}</td>
+      <td><span class="badge ${item.status === '待处理' ? 'badge-pending' : item.status === '已关闭' ? 'badge-draft' : 'badge-info'}">${item.status}</span></td>
+      <td><div class="action-btns"><button class="btn-text" onclick="viewContractDetail('${item.contractId}')">查看合同</button><button class="btn-text" onclick="delayReminder('${item.id}')">延期登记</button><button class="btn-text" onclick="closeReminder('${item.id}')">关闭提醒</button></div></td>
+    </tr>
+  `).join('');
+}
+
+function renderContractStatistics() {
+  const statusMap = {};
+  const typeMap = {};
+  contractData.forEach(item => {
+    statusMap[item.status] = (statusMap[item.status] || 0) + 1;
+    typeMap[item.type] = (typeMap[item.type] || 0) + 1;
+  });
+
+  document.getElementById('contract-statistics-cards').innerHTML = `
+    <div class="info-item"><div class="info-label">合同总数</div><div class="info-value">${contractStatistics.total || 0}</div></div>
+    <div class="info-item"><div class="info-label">生效中 / 已通过</div><div class="info-value">${contractStatistics.active || 0}</div></div>
+    <div class="info-item"><div class="info-label">审核中</div><div class="info-value">${contractStatistics.audit || 0}</div></div>
+    <div class="info-item"><div class="info-label">总金额</div><div class="info-value">${formatAmount(contractStatistics.amount || 0)}</div></div>
+  `;
+
+  const renderBar = (entries) => {
+    if (entries.length === 0) {
+      return '<div class="empty-state" style="padding:16px 0;">暂无统计数据</div>';
+    }
+    return entries.map(([label, count]) => `
+      <div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:13px;color:var(--text-secondary);">${label}</span><span style="font-size:13px;font-weight:600;">${count}</span></div>
+        <div style="height:8px;background:#F0F0F0;border-radius:4px;overflow:hidden;"><div style="width:${Math.max(10, (count / Math.max(contractStatistics.total || 1, 1)) * 100)}%;height:100%;background:#4A90D9;border-radius:4px;"></div></div>
+      </div>
+    `).join('');
+  };
+
+  document.getElementById('contract-statistics-status').innerHTML = renderBar(Object.entries(statusMap));
+  document.getElementById('contract-statistics-type').innerHTML = renderBar(Object.entries(typeMap));
+}
+
+async function renderContractModule() {
+  await loadContractModuleData();
+}
+
+function toggleContractTypeFields() {
+  const type = document.getElementById('contract-type').value;
+  document.getElementById('contract-project-fields').style.display = type === '项目合同' ? 'grid' : 'none';
+  document.getElementById('contract-framework-fields').style.display = type === '框架合同' ? 'grid' : 'none';
+}
+
+function toggleContractPaymentFields() {
+  const payment = document.getElementById('contract-payment-type').value;
+  const isAdvance = payment === '预付款';
+  document.getElementById('contract-advance-fields').style.display = isAdvance ? 'block' : 'none';
+  document.getElementById('contract-advance-condition').style.display = isAdvance ? 'block' : 'none';
+  document.getElementById('contract-cycle-type-wrap').style.display = isAdvance ? 'none' : 'block';
+  document.getElementById('contract-cycle-days-wrap').style.display = isAdvance ? 'none' : 'block';
+}
+
+function openNewContractModal() {
+  pendingNewContractFile = null;
+  newContractUploading = false;
+  document.getElementById('contract-name').value = '';
+  document.getElementById('contract-supplier').value = '';
+  document.getElementById('contract-owner').value = '陈雨';
+  document.getElementById('contract-type').value = '框架合同';
+  document.getElementById('contract-source').value = '我方模板';
+  document.getElementById('contract-payment-type').value = '预付款';
+  document.getElementById('contract-currency').value = 'CNY';
+  document.getElementById('contract-amount').value = '';
+  document.getElementById('contract-tax-rate').value = '';
+  document.getElementById('contract-advance-ratio').value = '30';
+  document.getElementById('contract-tail-condition').value = '服务完成后7天支付';
+  document.getElementById('contract-cycle-type').value = '服务完成后';
+  document.getElementById('contract-cycle-days').value = '15';
+  document.getElementById('contract-project-name').value = '';
+  document.getElementById('contract-order-name').value = '';
+  document.getElementById('contract-quotation-name').value = '';
+  document.getElementById('contract-area').value = '';
+  document.getElementById('contract-annual-amount').value = '';
+  document.getElementById('contract-scope').value = '';
+  document.getElementById('contract-start-date').value = '';
+  document.getElementById('contract-end-date').value = '';
+  document.getElementById('new-contract-file-input').value = '';
+  Array.from(document.getElementById('contract-resource-types').options).forEach(option => option.selected = false);
+  toggleContractTypeFields();
+  toggleContractPaymentFields();
+  renderNewContractFileList();
+  openModal('modal-new-contract');
+}
+
+function getSelectedOptions(selectId) {
+  return Array.from(document.getElementById(selectId).selectedOptions).map(option => option.value);
+}
+
+function getFileTypeLabel(fileName = '') {
+  const ext = (fileName.split('.').pop() || '').toLowerCase();
+  const map = {
+    pdf: 'PDF',
+    doc: 'WORD',
+    docx: 'WORD',
+    xls: 'EXCEL',
+    xlsx: 'EXCEL',
+    csv: 'CSV',
+    jpg: '图片',
+    jpeg: '图片',
+    png: '图片',
+    gif: '图片',
+    webp: '图片',
+    bmp: '图片',
+  };
+  return map[ext] || (ext ? ext.toUpperCase() : '文件');
+}
+
+function triggerNewContractFileUpload() {
+  if (newContractUploading) {
+    showToast('文件上传中，请稍候');
+    return;
+  }
+  document.getElementById('new-contract-file-input').click();
+}
+
+function renderNewContractFileList() {
+  const container = document.getElementById('new-contract-file-list');
+  if (!container) return;
+
+  if (!pendingNewContractFile) {
+    container.innerHTML = '<div class="empty-state" style="padding:20px 0;">暂无合同附件，请上传 Word、Excel、PDF 或图片文件</div>';
+    return;
+  }
+
+  const file = pendingNewContractFile;
+  const uploadingText = newContractUploading ? '上传中...' : '已上传';
+  container.innerHTML = `
+    <div class="contract-file-item">
+      <div>
+        <div style="font-weight:600;">${file.file_name}</div>
+        <div style="font-size:12px;color:var(--text-light);">${getFileTypeLabel(file.file_name)} · ${file.upload_user || '当前用户'} · ${uploadingText} · ${formatFileSize(file.file_size)}</div>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-outline btn-sm" type="button" onclick="triggerNewContractFileUpload()">${newContractUploading ? '上传中...' : '重新上传'}</button>
+        <button class="btn btn-outline btn-sm" type="button" onclick="removePendingNewContractFile()" ${newContractUploading ? 'disabled' : ''}>删除</button>
+      </div>
+    </div>
+  `;
+}
+
+function removePendingNewContractFile() {
+  if (newContractUploading) {
+    showToast('文件上传中，请稍候');
+    return;
+  }
+  pendingNewContractFile = null;
+  document.getElementById('new-contract-file-input').value = '';
+  renderNewContractFileList();
+}
+
+async function handleNewContractFileSelected(event) {
+  const file = event.target.files?.[0];
+  if (!file) return;
+
+  newContractUploading = true;
+  renderNewContractFileList();
+  try {
+    const uploadResult = await API.uploadFile('/files/upload', file);
+    const uploaded = unwrapApiResult(uploadResult);
+    pendingNewContractFile = {
+      file_name: file.name,
+      file_url: uploaded.url,
+      file_size: file.size,
+      upload_user: document.getElementById('contract-owner').value.trim() || '当前用户',
+    };
+    showToast('合同附件上传成功');
+  } catch (error) {
+    pendingNewContractFile = null;
+    showToast(error.message || '合同附件上传失败', 'error');
+  } finally {
+    newContractUploading = false;
+    event.target.value = '';
+    renderNewContractFileList();
+  }
+}
+
+async function saveContract(mode = 'draft') {
+  const name = document.getElementById('contract-name').value.trim();
+  const supplier = document.getElementById('contract-supplier').value.trim();
+  const owner = document.getElementById('contract-owner').value.trim();
+  const type = document.getElementById('contract-type').value;
+  const payment = document.getElementById('contract-payment-type').value;
+  const resources = getSelectedOptions('contract-resource-types');
+  if (!name || !supplier || !owner || resources.length === 0) {
+    showToast('请补全合同基础信息', 'error');
+    return;
+  }
+  if (newContractUploading) {
+    showToast('合同附件上传中，请稍后再保存', 'error');
+    return;
+  }
+
+  const body = {
+    contract_name: name,
+    contract_type: toApiContractType(type),
+    source_type: toApiContractSource(document.getElementById('contract-source').value),
+    supplier_name: supplier,
+    resource_types: resources,
+    project_name: document.getElementById('contract-project-name').value.trim() || undefined,
+    order_name: document.getElementById('contract-order-name').value.trim() || undefined,
+    quotation_name: document.getElementById('contract-quotation-name').value.trim() || undefined,
+    cooperation_area: document.getElementById('contract-area').value.trim() || undefined,
+    annual_estimated_amount: Number(document.getElementById('contract-annual-amount').value || 0) || undefined,
+    cooperation_scope: document.getElementById('contract-scope').value.trim() || undefined,
+    amount: Number(document.getElementById('contract-amount').value || 0) || undefined,
+    currency: document.getElementById('contract-currency').value,
+    tax_rate: Number(document.getElementById('contract-tax-rate').value || 0) || undefined,
+    payment_type: toApiPaymentType(payment),
+    advance_ratio: payment === '预付款' ? (Number(document.getElementById('contract-advance-ratio').value || 0) || undefined) : undefined,
+    tail_payment_condition: payment === '预付款' ? (document.getElementById('contract-tail-condition').value.trim() || undefined) : undefined,
+    payment_cycle_type: payment === '账期付款' ? toApiPaymentCycleType(document.getElementById('contract-cycle-type').value) : undefined,
+    payment_cycle_days: payment === '账期付款' ? (Number(document.getElementById('contract-cycle-days').value || 0) || undefined) : undefined,
+    start_date: document.getElementById('contract-start-date').value || undefined,
+    end_date: document.getElementById('contract-end-date').value || undefined,
+    owner_name: owner,
+    remark: mode === 'submit' ? '前端提交审核创建' : '前端保存草稿创建',
+  };
+
+  try {
+    const createResult = await API.post('/contracts', body);
+    const created = unwrapApiResult(createResult);
+    if (pendingNewContractFile) {
+      await API.post(`/contracts/${created.id}/files`, {
+        file_name: pendingNewContractFile.file_name,
+        file_url: pendingNewContractFile.file_url,
+        file_size: pendingNewContractFile.file_size,
+        upload_user: pendingNewContractFile.upload_user || owner,
+        version_no: created.current_version || 'V1.0',
+      });
+    }
+    if (mode === 'submit') {
+      await API.post(`/contracts/${created.id}/submit`, {});
+    }
+    closeModal('modal-new-contract');
+    pendingNewContractFile = null;
+    renderNewContractFileList();
+    await loadContractModuleData();
+    showToast(mode === 'submit' ? '合同已提交审核' : '合同已保存为草稿');
+  } catch (error) {
+    showToast(error.message || '合同保存失败', 'error');
+  }
+}
+
+function saveContractDraft() { saveContract('draft'); }
+function submitContractForAudit() { saveContract('submit'); }
+
+function formatDateTime(dateStr) {
+  if (!dateStr) return '-';
+  return String(dateStr).replace('T', ' ').slice(0, 16);
+}
+
+function formatFileSize(size) {
+  if (size == null || size === '') return '-';
+  const value = Number(size);
+  if (!Number.isFinite(value) || value <= 0) return '-';
+  if (value >= 1024 * 1024) return `${(value / 1024 / 1024).toFixed(1)} MB`;
+  if (value >= 1024) return `${(value / 1024).toFixed(1)} KB`;
+  return `${value} B`;
+}
+
+function renderContractDetailActions(detail) {
+  const status = getContractStatusText(detail.status);
+  const container = document.getElementById('contract-detail-actions');
+  const buttons = [];
+
+  if (status === '待AI审核') {
+    buttons.push(`<button class="btn btn-primary" type="button" onclick="startContractAiAudit()">开始AI审核</button>`);
+    buttons.push(`<button class="btn btn-outline" type="button" onclick="showToast('编辑合同能力下一步补充')">编辑合同</button>`);
+  }
+  if (status === 'AI审核中') {
+    buttons.push(`<button class="btn btn-primary" type="button" onclick="refreshContractAiTask()">刷新状态</button>`);
+    buttons.push(`<button class="btn btn-outline" type="button" onclick="switchContractDetailTab('contract-detail-tab-ai')">查看审核进度</button>`);
+  }
+  if (status === '待人工审核') {
+    buttons.push(`<button class="btn btn-primary" type="button" onclick="openContractAuditModal(activeContractId)">通过审核 / 驳回</button>`);
+    buttons.push(`<button class="btn btn-outline" type="button" onclick="startContractAiAudit()">重新AI审核</button>`);
+    buttons.push(`<button class="btn btn-outline" type="button" onclick="switchContractDetailTab('contract-detail-tab-ai')">查看AI报告</button>`);
+  }
+  if (status === '已通过') {
+    buttons.push(`<button class="btn btn-primary" type="button" onclick="downloadContractFile()">查看合同</button>`);
+    buttons.push(`<button class="btn btn-outline" type="button" onclick="openVersionModal(activeContractId)">生成合同版本</button>`);
+    buttons.push(`<button class="btn btn-outline" type="button" onclick="showToast('设置提醒能力待补充')">设置提醒</button>`);
+    buttons.push(`<button class="btn btn-outline" type="button" onclick="showToast('导出审核报告能力待补充')">导出审核报告</button>`);
+  }
+  if (buttons.length === 0) {
+    buttons.push(`<button class="btn btn-outline" type="button" onclick="switchContractDetailTab('contract-detail-tab-info')">查看详情</button>`);
+  }
+  container.innerHTML = buttons.join('');
+}
+
+function switchContractDetailTab(contentId) {
+  const target = document.getElementById(contentId);
+  if (!target) return;
+  const tabs = target.parentElement.querySelectorAll('.tab');
+  const tab = Array.from(tabs).find(item => item.getAttribute('onclick')?.includes(contentId));
+  if (tab) {
+    switchTab(tab, contentId);
+  }
+}
+
+function renderContractDetailView(detail) {
+  const contract = normalizeContract(detail);
+  activeContractDetail = detail;
+  activeContractAiTaskId = detail.ai_review?.task_id || '';
+  document.getElementById('contract-detail-title').textContent = `合同详情 — ${contract.name}`;
+  document.getElementById('contract-detail-summary').innerHTML = `
+    <div class="info-item"><div class="info-label">合同名称</div><div class="info-value">${contract.name}</div></div>
+    <div class="info-item"><div class="info-label">合同编号</div><div class="info-value">${contract.no}</div></div>
+    <div class="info-item"><div class="info-label">合同状态</div><div class="info-value"><span class="badge ${getContractStatusClass(contract.status)}">${contract.status}</span></div></div>
+    <div class="info-item"><div class="info-label">供应商</div><div class="info-value">${contract.supplier}</div></div>
+    <div class="info-item"><div class="info-label">合同类型</div><div class="info-value">${contract.type}</div></div>
+    <div class="info-item"><div class="info-label">创建人</div><div class="info-value">${contract.creator}</div></div>
+    <div class="info-item"><div class="info-label">创建时间</div><div class="info-value">${contract.createdAt}</div></div>
+    <div class="info-item"><div class="info-label">当前版本</div><div class="info-value">${contract.version}</div></div>
+  `;
+  renderContractDetailActions(detail);
+
+  document.getElementById('contract-detail-basic').innerHTML = `
+    <div class="info-item"><div class="info-label">合同编号</div><div class="info-value">${contract.no}</div></div>
+    <div class="info-item"><div class="info-label">合同名称</div><div class="info-value">${contract.name}</div></div>
+    <div class="info-item"><div class="info-label">合同类型</div><div class="info-value">${contract.type}</div></div>
+    <div class="info-item"><div class="info-label">合同来源</div><div class="info-value">${contract.source}</div></div>
+    <div class="info-item"><div class="info-label">供应商</div><div class="info-value">${contract.supplier}</div></div>
+    <div class="info-item"><div class="info-label">资源类型</div><div class="info-value">${contract.resourceTypes.length ? contract.resourceTypes.join('、') : '-'}</div></div>
+    <div class="info-item"><div class="info-label">合同模式</div><div class="info-value">${detail.contract_mode || '-'}</div></div>
+    <div class="info-item"><div class="info-label">订单绑定</div><div class="info-value">${detail.order_bind_type || '-'}</div></div>
+    <div class="info-item"><div class="info-label">合同金额</div><div class="info-value">${formatAmount(contract.amount)}</div></div>
+    <div class="info-item"><div class="info-label">币种</div><div class="info-value">${detail.currency || 'CNY'}</div></div>
+    <div class="info-item"><div class="info-label">付款方式</div><div class="info-value">${getContractPaymentText(contract)}</div></div>
+    <div class="info-item"><div class="info-label">合同有效期</div><div class="info-value">${getContractDateRange(contract)}</div></div>
+    <div class="info-item"><div class="info-label">合作区域</div><div class="info-value">${detail.cooperation_area || '-'}</div></div>
+    <div class="info-item"><div class="info-label">合作范围</div><div class="info-value">${detail.cooperation_scope || '-'}</div></div>
+    <div class="info-item"><div class="info-label">退款规则</div><div class="info-value">${detail.refund_rule || '-'}</div></div>
+    <div class="info-item"><div class="info-label">违约责任</div><div class="info-value">${detail.breach_liability || '-'}</div></div>
+  `;
+
+  document.getElementById('contract-preview-box').innerHTML = `${contract.preview}<br><span style="font-size:12px;color:var(--text-light);">支持 PDF / Word / 图片文件预览</span>`;
+  const files = detail.files || [];
+  document.getElementById('contract-detail-files').innerHTML = files.length
+    ? files.map(item => `<tr><td>${item.file_name}</td><td>${item.file_type || '-'}</td><td>${formatFileSize(item.file_size)}</td><td>${item.upload_user || '-'}</td><td>${formatDateTime(item.created_at)}</td><td>${item.version_no || '-'}</td><td><button class="btn-text" onclick="downloadContractFile('${encodeURIComponent(item.file_url || '')}','${encodeURIComponent(item.file_name || '')}')">下载</button></td></tr>`).join('')
+    : '<tr><td colspan="7"><div class="empty-state" style="padding:24px 0;">暂无合同文件</div></td></tr>';
+
+  const aiReview = detail.ai_review || {};
+  document.getElementById('contract-ai-score').textContent = aiReview.risk_score || '-';
+  document.getElementById('contract-ai-level').textContent = aiReview.risk_level || '待AI审核';
+  document.getElementById('contract-ai-result').textContent = aiReview.audit_result || '-';
+  document.getElementById('contract-ai-summary').textContent = aiReview.summary || '请先发起 AI 审核';
+  document.getElementById('contract-ai-issues').innerHTML = (aiReview.issues || []).length
+    ? aiReview.issues.map(item => `<tr><td>${item.risk_type || '-'}</td><td>${item.risk_level || '-'}</td><td>${item.risk_description || '-'}</td><td>${item.original_text || '-'}</td><td>${item.suggestion || '-'}</td></tr>`).join('')
+    : '<tr><td colspan="5"><div class="empty-state" style="padding:24px 0;">暂无 AI 风险问题</div></td></tr>';
+  const extracted = {
+    ...(aiReview.extracted_fields || {}),
+    contract_party: aiReview.extracted_fields?.contract_party || detail.supplier_name || '-',
+    contract_type: aiReview.extracted_fields?.contract_type || detail.contract_type || '',
+    resource_type: aiReview.extracted_fields?.resource_type || detail.resource_types || [],
+    contract_amount: aiReview.extracted_fields?.contract_amount || detail.amount || detail.annual_estimated_amount || 0,
+    payment_type: aiReview.extracted_fields?.payment_type || detail.payment_type || '',
+    advance_payment_ratio: aiReview.extracted_fields?.advance_payment_ratio ?? detail.advance_ratio ?? null,
+    payment_period_days: aiReview.extracted_fields?.payment_period_days ?? detail.payment_cycle_days ?? null,
+    refund_rule: aiReview.extracted_fields?.refund_rule || detail.refund_rule || '',
+    breach_liability: aiReview.extracted_fields?.breach_liability || detail.breach_liability || '',
+    contract_validity: aiReview.extracted_fields?.contract_validity || (
+      detail.start_date && detail.end_date ? `${detail.start_date} ~ ${detail.end_date}` : ''
+    ),
+  };
+  document.getElementById('contract-ai-extracted').innerHTML = `
+    <div class="info-item"><div class="info-label">合同主体</div><div class="info-value">${extracted.contract_party || '-'}</div></div>
+    <div class="info-item"><div class="info-label">合同类型</div><div class="info-value">${getContractTypeText(extracted.contract_type) || '-'}</div></div>
+    <div class="info-item"><div class="info-label">资源类型</div><div class="info-value">${Array.isArray(extracted.resource_type) ? extracted.resource_type.join('、') : (extracted.resource_type || '-')}</div></div>
+    <div class="info-item"><div class="info-label">合同金额</div><div class="info-value">${formatAmount(extracted.contract_amount)}</div></div>
+    <div class="info-item"><div class="info-label">付款方式</div><div class="info-value">${getPaymentTypeText(extracted.payment_type) || '-'}</div></div>
+    <div class="info-item"><div class="info-label">预付款比例</div><div class="info-value">${extracted.advance_payment_ratio != null ? `${extracted.advance_payment_ratio}%` : '-'}</div></div>
+    <div class="info-item"><div class="info-label">账期天数</div><div class="info-value">${extracted.payment_period_days || '-'}</div></div>
+    <div class="info-item"><div class="info-label">退款规则</div><div class="info-value">${extracted.refund_rule || '-'}</div></div>
+    <div class="info-item"><div class="info-label">违约责任</div><div class="info-value">${extracted.breach_liability || '-'}</div></div>
+    <div class="info-item"><div class="info-label">合同有效期</div><div class="info-value">${extracted.contract_validity || '-'}</div></div>
+  `;
+
+  document.getElementById('contract-detail-flow').innerHTML = (detail.audit_flow || []).length
+    ? detail.audit_flow.map(item => `<tr><td>${item.node_name}</td><td>${item.operator || '-'}</td><td>${item.status || '-'}</td><td>${formatDateTime(item.operate_time)}</td><td>${item.comment || '-'}</td></tr>`).join('')
+    : '<tr><td colspan="5"><div class="empty-state" style="padding:24px 0;">暂无审核流程</div></td></tr>';
+
+  const versions = detail.versions || [];
+  document.getElementById('contract-detail-versions').innerHTML = versions.length
+    ? versions.map(item => `<tr><td>${item.version_no}</td><td>${item.change_reason || '-'}</td><td>${item.creator_name || item.creator || '-'}</td><td>${formatDateTime(item.created_at)}</td></tr>`).join('')
+    : '<tr><td colspan="4"><div class="empty-state" style="padding:24px 0;">暂无版本记录</div></td></tr>';
+
+  const logs = detail.operation_logs || [];
+  document.getElementById('contract-detail-logs').innerHTML = logs.length
+    ? logs.map(item => `<tr><td>${item.operator_name || item.operator || '-'}</td><td>${item.operation_type || '-'}</td><td>${item.operation_content || '-'}</td><td>${formatDateTime(item.operation_time)}</td></tr>`).join('')
+    : '<tr><td colspan="4"><div class="empty-state" style="padding:24px 0;">暂无操作日志</div></td></tr>';
+}
+
+async function viewContractDetail(id) {
+  try {
+    const result = await API.get(`/contracts/${id}`);
+    const detail = unwrapApiResult(result);
+    activeContractId = id;
+    renderContractDetailView(detail);
+    openModal('modal-contract-detail');
+  } catch (error) {
+    showToast(error.message || '合同详情加载失败', 'error');
+  }
+}
+
+async function startContractAiAudit() {
+  if (!activeContractId) return;
+  try {
+    const result = await API.post(`/contracts/${activeContractId}/ai-audit`, {});
+    const task = unwrapApiResult(result);
+    if (!task?.task_id) {
+      throw new Error('AI 审核任务创建失败');
+    }
+    activeContractAiTaskId = task.task_id;
+    showToast('已发起 AI 审核');
+    await viewContractDetail(activeContractId);
+    switchContractDetailTab('contract-detail-tab-ai');
+    pollContractAiTask(task.task_id);
+  } catch (error) {
+    showToast(error.message || '发起 AI 审核失败', 'error');
+  }
+}
+
+async function refreshContractAiTask() {
+  if (!activeContractAiTaskId) {
+    showToast('当前没有进行中的 AI 审核任务', 'error');
+    return;
+  }
+  try {
+    const result = await API.get(`/contracts/ai-task/${activeContractAiTaskId}`);
+    const task = unwrapApiResult(result);
+    if (task.status === 'success') {
+      showToast('AI 审核已完成');
+      await viewContractDetail(activeContractId);
+      switchContractDetailTab('contract-detail-tab-ai');
+      return;
+    }
+    showToast(task.progress_message || 'AI 审核仍在处理中');
+  } catch (error) {
+    showToast(error.message || '获取 AI 审核状态失败', 'error');
+  }
+}
+
+async function pollContractAiTask(taskId) {
+  try {
+    const result = await API.get(`/contracts/ai-task/${taskId}`);
+    const task = unwrapApiResult(result);
+    activeContractAiTaskId = taskId;
+    if (task.status === 'processing') {
+      setTimeout(() => pollContractAiTask(taskId), 1500);
+      return;
+    }
+    if (task.status === 'success') {
+      await viewContractDetail(activeContractId);
+      switchContractDetailTab('contract-detail-tab-ai');
+      showToast('AI 审核完成，已刷新结果');
+      return;
+    }
+    showToast(task.error_message || 'AI 审核失败', 'error');
+  } catch (error) {
+    showToast(error.message || 'AI 审核轮询失败', 'error');
+  }
+}
+
+function openContractAuditModal(id) {
+  const contract = contractData.find(item => item.id === id);
+  if (!contract) return;
+  activeContractId = id;
+  document.getElementById('contract-audit-basic').innerHTML = `
+    <div class="info-item"><div class="info-label">合同编号</div><div class="info-value">${contract.no}</div></div>
+    <div class="info-item"><div class="info-label">合同名称</div><div class="info-value">${contract.name}</div></div>
+    <div class="info-item"><div class="info-label">供应商</div><div class="info-value">${contract.supplier}</div></div>
+    <div class="info-item"><div class="info-label">合同金额</div><div class="info-value">${formatAmount(contract.amount)}</div></div>
+  `;
+  document.getElementById('contract-audit-comment').value = '';
+  openModal('modal-contract-audit');
+}
+
+async function handleContractAudit(action) {
+  const comment = document.getElementById('contract-audit-comment').value.trim();
+  if (!comment) {
+    showToast('请填写审核意见', 'error');
+    return;
+  }
+  try {
+    const url = action === 'pass'
+      ? `/contracts/${activeContractId}/audit/pass`
+      : `/contracts/${activeContractId}/audit/reject`;
+    const result = await API.post(url, { comment });
+    if (result.code && result.code !== 200) {
+      throw new Error(result.message || '合同审核失败');
+    }
+    closeModal('modal-contract-audit');
+    await loadContractModuleData();
+    showToast(action === 'pass' ? '合同已审核通过' : '合同已驳回');
+  } catch (error) {
+    showToast(error.message || '合同审核失败', 'error');
+  }
+}
+
+function openVersionModal(id) {
+  activeContractId = id;
+  const contract = contractData.find(item => item.id === id);
+  const versions = contractVersionData.filter(item => item.contractId === id);
+  const nextVersion = `V${versions.length + 1}.0`;
+  document.getElementById('contract-version-no').value = nextVersion;
+  document.getElementById('contract-version-file').value = contract ? `${contract.name}_${nextVersion}.pdf` : '';
+  document.getElementById('contract-version-reason').value = '';
+  openModal('modal-contract-version');
+}
+
+async function saveContractVersion() {
+  const version = document.getElementById('contract-version-no').value.trim();
+  const reason = document.getElementById('contract-version-reason').value.trim();
+  const file = document.getElementById('contract-version-file').value.trim();
+  if (!version || !reason) {
+    showToast('请填写版本号和修改原因', 'error');
+    return;
+  }
+  try {
+    const result = await API.post(`/contracts/${activeContractId}/version`, {
+      version_no: version,
+      change_reason: reason,
+      file_id: file || undefined,
+    });
+    if (result.code && result.code !== 200) {
+      throw new Error(result.message || '合同版本创建失败');
+    }
+    closeModal('modal-contract-version');
+    await loadContractModuleData();
+    showToast('合同版本已创建');
+  } catch (error) {
+    showToast(error.message || '合同版本创建失败', 'error');
+  }
+}
+
+function openTemplateModal() {
+  document.getElementById('template-name').value = '';
+  document.getElementById('template-type').value = '框架合同';
+  document.getElementById('template-resources').value = '';
+  document.getElementById('template-file').value = '';
+  openModal('modal-contract-template');
+}
+
+async function saveContractTemplate() {
+  const name = document.getElementById('template-name').value.trim();
+  const type = document.getElementById('template-type').value;
+  const resources = document.getElementById('template-resources').value.trim();
+  const file = document.getElementById('template-file').value.trim();
+  if (!name || !file) {
+    showToast('请填写模板名称和模板文件', 'error');
+    return;
+  }
+  try {
+    const result = await API.post('/contracts/templates', {
+      template_name: name,
+      contract_type: toApiContractType(type),
+      resource_types: resources ? resources.split(/[、,，]/).map(item => item.trim()).filter(Boolean) : [],
+      file_url: file,
+      creator_name: '前端用户',
+    });
+    if (result.code && result.code !== 200) {
+      throw new Error(result.message || '模板保存失败');
+    }
+    closeModal('modal-contract-template');
+    await loadContractModuleData();
+    showToast('合同模板已保存');
+  } catch (error) {
+    showToast(error.message || '模板保存失败', 'error');
+  }
+}
+
+async function toggleTemplateStatus(id) {
+  const template = contractTemplateData.find(item => item.id === id);
+  if (!template) return;
+  try {
+    const url = template.status === '启用'
+      ? `/contracts/templates/${id}/disable`
+      : `/contracts/templates/${id}/enable`;
+    const result = await API.put(url, {});
+    if (result.code && result.code !== 200) {
+      throw new Error(result.message || '模板状态更新失败');
+    }
+    await loadContractModuleData();
+    showToast(`模板已${template.status === '启用' ? '停用' : '启用'}`);
+  } catch (error) {
+    showToast(error.message || '模板状态更新失败', 'error');
+  }
+}
+
+async function copyTemplate(id) {
+  const template = contractTemplateData.find(item => item.id === id);
+  if (!template) return;
+  try {
+    const result = await API.post('/contracts/templates', {
+      template_name: `${template.name}-副本`,
+      contract_type: toApiContractType(template.type),
+      resource_types: template.resources ? template.resources.split('、').filter(Boolean) : [],
+      file_url: template.file,
+      version: template.version,
+      creator_name: '前端用户',
+    });
+    if (result.code && result.code !== 200) {
+      throw new Error(result.message || '模板复制失败');
+    }
+    await loadContractModuleData();
+    showToast('模板已复制');
+  } catch (error) {
+    showToast(error.message || '模板复制失败', 'error');
+  }
+}
+
+function delayReminder(id) {
+  showToast('后端暂未提供延期登记接口', 'error');
+}
+
+function closeReminder(id) {
+  showToast('后端暂未提供关闭提醒接口', 'error');
+}
+
+function downloadContractFile(fileUrl = '', fileName = '') {
+  const decodedUrl = decodeURIComponent(fileUrl || '');
+  const decodedName = decodeURIComponent(fileName || '');
+  const targetFile = decodedUrl || activeContractDetail?.files?.[0]?.file_url || '';
+  if (!targetFile) {
+    showToast('暂无可下载的合同文件', 'error');
+    return;
+  }
+
+  const filename = targetFile.split('/').pop();
+  if (!filename) {
+    showToast('合同文件地址无效', 'error');
+    return;
+  }
+
+  window.open(getApiUrl(`/files/download/${filename}`), '_blank', 'noopener,noreferrer');
+  showToast(`开始下载 ${decodedName || filename}`);
 }
 
 // ========== Day Resources Toggle ==========
@@ -1812,8 +3911,10 @@ function showToast(msg, type = 'success') {
 }
 
 // ========== Init ==========
+switchPage('dashboard');
 loadQuotes();
 loadCustomers();
+renderContractModule();
 renderTeams();
 renderProcurement();
 renderItinerary();
