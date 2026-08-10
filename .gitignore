@@ -1,31 +1,27 @@
-# Dependencies
+.local/
+.tmp_backend_sync/
+
 node_modules/
 backend/node_modules/
 
-# Build output
-# dist/
-# backend/dist/
-
-# Database
+backend/uploads/
+backend/database.sqlite
 *.sqlite
 *.sqlite-journal
-backend/database.sqlite
-database.sqlite
 
-# Environment
 .env
 backend/.env
 
-# Logs
 *.log
 npm-debug.log*
 
-# OS
 .DS_Store
 Thumbs.db
-
-# IDE
 .idea/
 .vscode/
 *.swp
 *.swo
+
+合同 api和数据库docx.docx
+合同prd.docx
+合同审核prd.docx
